@@ -111,6 +111,14 @@
     
         
             
+            <li><div data-rel="算法专栏">算法专栏<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
             <li><div data-rel="有感而发">有感而发<small>(1)</small></div>
                 
             </li>
@@ -120,14 +128,6 @@
         
             
             <li><div data-rel="杂项">杂项<small>(1)</small></div>
-                
-            </li>
-            
-        
-    
-        
-            
-            <li><div data-rel="算法专栏">算法专栏<small>(1)</small></div>
                 
             </li>
             
@@ -241,6 +241,14 @@
             <span class="post-date" title="2019-07-25 20:54:52">2019/07/25</span>
         </a>
         
+        <a  class="算法专栏 "
+           href="/2019/07/19/算法专栏/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="算法专栏">算法专栏</span>
+            <span class="post-date" title="2019-07-19 16:03:54">2019/07/19</span>
+        </a>
+        
         <a  class="有感而发 "
            href="/2019/07/19/有感而发/"
            data-tag=""
@@ -257,20 +265,12 @@
             <span class="post-date" title="2019-07-19 16:06:57">2019/07/19</span>
         </a>
         
-        <a  class="算法专栏 "
-           href="/2019/07/19/算法专栏/"
+        <a  class="编程 "
+           href="/2019/07/20/编程/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="算法专栏">算法专栏</span>
-            <span class="post-date" title="2019-07-19 16:03:54">2019/07/19</span>
-        </a>
-        
-        <a  class="系统 "
-           href="/2019/07/22/系统负载/"
-           data-tag="负载"
-           data-author="" >
-            <span class="post-title" title="系统负载">系统负载</span>
-            <span class="post-date" title="2019-07-22 22:18:27">2019/07/22</span>
+            <span class="post-title" title="编程">编程</span>
+            <span class="post-date" title="2019-07-20 19:31:09">2019/07/20</span>
         </a>
         
         <a  class="系统 "
@@ -281,20 +281,20 @@
             <span class="post-date" title="2019-07-19 13:59:54">2019/07/19</span>
         </a>
         
-        <a  class="编程 "
-           href="/2019/07/20/编程/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="编程">编程</span>
-            <span class="post-date" title="2019-07-20 19:31:09">2019/07/20</span>
-        </a>
-        
         <a  class="网络 "
            href="/2019/07/19/网络/"
            data-tag=""
            data-author="" >
             <span class="post-title" title="网络">网络</span>
             <span class="post-date" title="2019-07-19 16:06:52">2019/07/19</span>
+        </a>
+        
+        <a  class="系统 "
+           href="/2019/07/22/系统负载/"
+           data-tag="负载"
+           data-author="" >
+            <span class="post-title" title="系统负载">系统负载</span>
+            <span class="post-date" title="2019-07-22 22:18:27">2019/07/22</span>
         </a>
         
         <a  class="面试题专栏 "
@@ -329,7 +329,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-07-26 06:20:25'>2019-07-25 20:54</time>
+        创建时间:<time class="date" title='更新时间: 2019-07-26 23:19:32'>2019-07-25 20:54</time>
         
     </div>
     <div class="article-meta">
@@ -351,7 +351,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#代码块"><span class="toc-text">代码块</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CPU篇"><span class="toc-text">CPU篇</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内存篇"><span class="toc-text">内存篇</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IO篇"><span class="toc-text">IO篇</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网络篇"><span class="toc-text">网络篇</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -366,16 +366,10 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><pre><code>@requires_authorization
-def somefunc(param1=&#39;&#39;, param2=0):
-    &#39;&#39;&#39;A docstring&#39;&#39;&#39;
-    if param1 &gt; param2: # interesting
-        print &#39;Greater&#39;
-    return (param2 - param1 + 1) or None
-class SomeClass:
-    pass
-&gt;&gt;&gt; message = &#39;&#39;&#39;interpreter
-... prompt&#39;&#39;&#39;</code></pre><p><img src="/2019/07/25/性能判断专栏/1.png" alt="BP"></p>
+        <h2 id="CPU篇"><a href="#CPU篇" class="headerlink" title="CPU篇"></a>CPU篇</h2><p><img src="/2019/07/25/性能判断专栏/4.png" alt="分析点"><br><img src="/2019/07/25/性能判断专栏/3.png" alt="分析过程"></p>
+<h2 id="内存篇"><a href="#内存篇" class="headerlink" title="内存篇"></a>内存篇</h2><p><img src="/2019/07/25/性能判断专栏/4.png" alt="分析点"><br><img src="/2019/07/25/性能判断专栏/3.png" alt="分析过程"></p>
+<h2 id="IO篇"><a href="#IO篇" class="headerlink" title="IO篇"></a>IO篇</h2><p><img src="/2019/07/25/性能判断专栏/4.png" alt="分析点"><br><img src="/2019/07/25/性能判断专栏/3.png" alt="分析过程"></p>
+<h2 id="网络篇"><a href="#网络篇" class="headerlink" title="网络篇"></a>网络篇</h2><p><img src="/2019/07/25/性能判断专栏/4.png" alt="分析点"><br><img src="/2019/07/25/性能判断专栏/3.png" alt="分析过程"></p>
 
       
        
@@ -393,7 +387,7 @@ class SomeClass:
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="jame_xhs">jame_xhs</a></p>
     <p><span class="copy-title">发布时间:</span>2019-07-25, 20:54:52</p>
-    <p><span class="copy-title">最后更新:</span>2019-07-26, 06:20:25</p>
+    <p><span class="copy-title">最后更新:</span>2019-07-26, 23:19:32</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/07/25/性能判断专栏/" title="性能判断专栏">http://www.jxhs.me/2019/07/25/性能判断专栏/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
