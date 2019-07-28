@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>系统网络篇 | jame_xhs&#39;s blog</title>
-  <meta name="keywords" content>
-  <meta name="description" content="系统网络篇 | jame_xhs&#39;s blog">
+  <title>docker运行容器后agetty进程cpu占用率100% | jame_xhs&#39;s blog</title>
+  <meta name="keywords" content=" docker ">
+  <meta name="description" content="docker运行容器后agetty进程cpu占用率100% | jame_xhs&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="个人介绍一名来自湖北武汉的运维开发工程师，个人爱好很多，比如算法，单片机（创业方向：少儿编程），Linux内核 python，以及很多很多的东西。但是都不怎么专，半桶水的样子。 希望以后一直在运维行业内呆着。可能写一些自己平台。或者好用的工具。但是自己的定位还是运维。  短期计划1.尝试深入理解Linux内核，独立编写一个简单的内核 2.一周两个算法AJ题目。持续下去 3.一周看四个小时以上的书">
 <meta property="og:type" content="website">
@@ -341,9 +341,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-系统网络篇" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-docker运行容器后agetty进程cpu占用率100" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">系统网络篇</h1>
+        <h1 class="article-title">docker运行容器后agetty进程cpu占用率100%</h1>
     
     <div class="article-meta">
         
@@ -351,15 +351,21 @@
         
         <span class="book">
             
-                <a href="javascript:" data-rel="系统">系统</a>
+                <a href="javascript:" data-rel="容器">容器</a>
             
         </span>
         
         
+        <span class="tag">
+            
+            <a href="javascript:" class="color2">docker</a>
+            
+        </span>
+        
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-07-19 14:33:24'>2019-07-19 13:59</time>
+        创建时间:<time class="date" title='更新时间: 2019-07-28 15:01:32'>2019-07-28 14:23</time>
         
     </div>
     <div class="article-meta">
@@ -396,7 +402,29 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <pre><code class="python">asdasd</code></pre>
+        <blockquote>
+<p>最近在使用docker容器的时候，发现宿主机的agetty进程cpu占用率达到100%。<br><img src="/2019/07/28/docker运行容器后agetty进程cpu占用率100/docker.png" alt="负载图"></p>
+</blockquote>
+<p>在Google上搜了下，引起这个问题的原因是在使用”docker run”运行容器时使用了 “/sbin/init”和”–privileged”参数。</p>
+<p>使用/sbin/init启动容器并加上–privileged参数，相当于docker容器获得了宿主机的全权委托权限。这时docker容器内部的init与宿主机的init产生了混淆。</p>
+<p>###引用google到的一段话：</p>
+<blockquote>
+<p>I’ve done all my testing on them without using –privileged, especially since that’s so dangerous (effectively, you’re telling this second init process on your system that it’s cool to go ahead and manage your system resources, and then giving it access to them as well). I always think of –privileged as a hammer to be used very sparingly.</p>
+</blockquote>
+<hr>
+<p>出于对安全的考虑，在启动容器时，docker容器里的系统只具有一些普通的linux权限，并不具有真正root用户的所有权限。而–privileged=true参数可以让docker容器具有linux root用户的所有权限。</p>
+<p>为了解决这个问题，docker后来的版本中docker run增加了两个选项参数”–cap-add”和”–cap-drop”。</p>
+<p>–cap-add : 获取default之外的linux的权限</p>
+<p>–cap-drop: 放弃default linux权限</p>
+<blockquote>
+<p>所以，在运行容器时，可以不用–privileged参数的尽量不用，用–cap-add参数替代。如果必须使用–privileged=true参数的，可以通过在宿主机和容器中执行以下命令将agetty关闭。</p>
+</blockquote>
+<blockquote>
+<p>shell&gt; systemctl stop <a href="mailto:getty@tty1.service" target="_blank" rel="noopener">getty@tty1.service</a></p>
+</blockquote>
+<blockquote>
+<p>shell&gt; systemctl mask <a href="mailto:getty@tty1.service" target="_blank" rel="noopener">getty@tty1.service</a></p>
+</blockquote>
 
       
        
@@ -410,12 +438,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>系统网络篇</p>
+    <p><span class="copy-title">文章标题:</span>docker运行容器后agetty进程cpu占用率100%</p>
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="jame_xhs">jame_xhs</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-07-19, 13:59:54</p>
-    <p><span class="copy-title">最后更新:</span>2019-07-19, 14:33:24</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/07/19/系统网络篇/" title="系统网络篇">http://www.jxhs.me/2019/07/19/系统网络篇/</a>
+    <p><span class="copy-title">发布时间:</span>2019-07-28, 14:23:32</p>
+    <p><span class="copy-title">最后更新:</span>2019-07-28, 15:01:32</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/07/28/docker运行容器后agetty进程cpu占用率100/" title="docker运行容器后agetty进程cpu占用率100%">http://www.jxhs.me/2019/07/28/docker运行容器后agetty进程cpu占用率100/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
