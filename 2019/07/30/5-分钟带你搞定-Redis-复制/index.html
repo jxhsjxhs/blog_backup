@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>系统负载 | jame_xhs&#39;s blog</title>
-  <meta name="keywords" content=" 负载 ">
-  <meta name="description" content="系统负载 | jame_xhs&#39;s blog">
+  <title>5 分钟带你搞定 Redis 复制 | jame_xhs&#39;s blog</title>
+  <meta name="keywords" content>
+  <meta name="description" content="5 分钟带你搞定 Redis 复制 | jame_xhs&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="个人介绍一名来自湖北武汉的运维开发工程师，个人爱好很多，比如算法，单片机（创业方向：少儿编程），Linux内核 python，以及很多很多的东西。但是都不怎么专，半桶水的样子。 希望以后一直在运维行业内呆着。可能写一些自己平台。或者好用的工具。但是自己的定位还是运维。  短期计划1.尝试深入理解Linux内核，独立编写一个简单的内核 2.一周两个算法AJ题目。持续下去 3.一周看四个小时以上的书">
 <meta property="og:type" content="website">
@@ -357,31 +357,19 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-系统负载" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-5-分钟带你搞定-Redis-复制" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">系统负载</h1>
+        <h1 class="article-title">5 分钟带你搞定 Redis 复制</h1>
     
     <div class="article-meta">
         
         
         
-        <span class="book">
-            
-                <a href="javascript:" data-rel="系统">系统</a>
-            
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="javascript:" class="color3">负载</a>
-            
-        </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-07-27 01:10:39'>2019-07-22 22:18</time>
+        创建时间:<time class="date" title='更新时间: 2019-07-30 12:14:41'>2019-07-30 11:41</time>
         
     </div>
     <div class="article-meta">
@@ -403,7 +391,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#负载变高有三个原因："><span class="toc-text">负载变高有三个原因：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mpstat"><span class="toc-text">mpstat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pidstat"><span class="toc-text">pidstat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vmstat"><span class="toc-text">vmstat</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CPU-性能"><span class="toc-text">CPU 性能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#排查-cpu-负载"><span class="toc-text">排查 cpu 负载</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#排查方法"><span class="toc-text">排查方法</span></a></li></ol>
+        
     
 <style>
     .left-col .switch-btn,
@@ -418,35 +406,53 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="负载变高有三个原因："><a href="#负载变高有三个原因：" class="headerlink" title="负载变高有三个原因："></a>负载变高有三个原因：</h2><blockquote>
-<p>1.CPU 密集型进程，使用大量 CPU 会知道平均负载升高。<br>2.I/O 密集型进程，等到 I/O 也会导致平均负载升高，但是 CPU 使用率不一定很高。 3.大量等待 CPU 的进程调度也会导致平均负载升高，此时 CPU 使用率也会比较高。</p>
-</blockquote>
-<center> iostat mpstat pidstat vmstat perf top</center>
-
-
-<h3 id="mpstat"><a href="#mpstat" class="headerlink" title="mpstat"></a>mpstat</h3><blockquote>
-<p>mpstat -P ALL 5<br>作用查看 cpu 每个 cpu 使用情况</p>
-</blockquote>
-<h3 id="pidstat"><a href="#pidstat" class="headerlink" title="pidstat"></a>pidstat</h3><blockquote>
-<p>pidstat -u 5 1<br>实时查看进程的 CPU、内存、I/O 以及上下文切换等性能指标</p>
-</blockquote>
-<h3 id="vmstat"><a href="#vmstat" class="headerlink" title="vmstat"></a>vmstat</h3><blockquote>
-<p>vmstat 1<br>查看 系统内存和上下文切换以及切换类型的工具</p>
-</blockquote>
+        <p>##本文大纲</p>
+<p>1.复制过程</p>
+<p>2.数据间的同步</p>
+<p>3.全量复制</p>
+<p>4.部分复制</p>
+<p>5.心跳</p>
+<p>6.异步复制</p>
+<p>7.总结</p>
+<p>###一、复制过程</p>
 <blockquote>
-<p>举例：<br>发现系统负载变高时候 1.使用 mpstat -P ALL 5<br>发现是使用率为百分之百 但是 iowait 为 0 说明此时真的有程序使用了百分之百的 CPU，这次负载升高就是此原因</p>
+<p>Step 1：从节点执行 slaveof 命令。<br>Step 2：从节点只是保存了 slaveof 命令中主节点的信息，并没有立即发起复制。<br>Step 3：从节点内部的定时任务发现有主节点的信息，开始使用 socket 连接主节点。<br>Step 4：连接建立成功后，发送 ping 命令，希望得到 pong 命令响应，否则会进行重连。<br>Step 5：如果主节点设置了权限，那么就需要进行权限验证，如果验证失败，复制终止。<br>Step 6：权限验证通过后，进行数据同步，这是耗时最长的操作，主节点将把所有的数据全部发送给从节点。<br>Step 7：当主节点把当前的数据同步给从节点后，便完成了复制的建立流程。接下来，主节点就会持续的把写命令发送给从节点，保证主从数据一致性。<br><img src="/2019/07/30/5-分钟带你搞定-Redis-复制/redis.png" alt="复制过程"></p>
 </blockquote>
+<p>###二、数据间的同步<br>上面说的复制过程，其中有一个步骤是“同步数据集”，这个就是现在讲的“数据间的同步”。<br>redis 同步有 2 个命令：sync 和 psync，前者是 redis 2.8 之前的同步命令，后者是 redis 2.8 为了优化 sync 新设计的命令。我们会重点关注 2.8 的 psync 命令。</p>
 <blockquote>
-<p>2.使用 mpstat -P ALL 5<br>发现系统 CPU 使用率只有百分之 20 多 但是 系统的 iowait 达到了百分之 70 多 这说明这次负载升高是由于 iowait 引起的<br>然后使用 pidstat -u 5 1</p>
+<p>1、psync命令需要3个组件支持<br>主从节点各自复制偏移量<br>主节点复制积压缓冲区<br>主节点运行 ID<br>2、主从节点各自复制偏移量<br>参与复制的主从节点都会维护自身的复制偏移量。<br>主节点在处理完写入命令后，会把命令的字节长度做累加记录，统计信息在 info replication 中的 masterreploffset 指标中。<br>从节点每秒钟上报自身的的复制偏移量给主节点，因此主节点也会保存从节点的复制偏移量。<br>从节点在接收到主节点发送的命令后，也会累加自身的偏移量，统计信息在 info replication 中。<br>通过对比主从节点的复制偏移量，可以判断主从节点数据是否一致。<br>3、主节点复制积压缓冲区<br>复制积压缓冲区是一个保存在主节点的一个固定长度的先进先出的队列，默认大小 1MB。<br>这个队列在 slave 连接是创建。这时主节点响应写命令时，不但会把命令发送给从节点，也会写入复制缓冲区。<br>他的作用就是用于部分复制和复制命令丢失的数据补救。通过 info replication 可以看到相关信息。<br>4、主节点运行ID<br>每个 redis 启动的时候，都会生成一个 40 位的运行 ID。<br>运行 ID 的主要作用是用来识别 Redis 节点。如果使用 ip+port 的方式，那么如果主节点重启修改了 RDB/AOF 数据，从节点再基于偏移量进行复制将是不安全的。所以，当运行 id 变化后，从节点将进行全量复制。也就是说，redis 重启后，默认从节点会进行全量复制。<br>5、如果在重启时不改变运行ID呢？<br>可以通过 debug reload 命令重新加载 RDB 并保持运行 ID 不变，从而有效的避免不必要的全量复制。<br>缺点是：debug reload 命令会阻塞当前 Redis 节点主线程，因此对于大数据量的主节点或者无法容忍阻塞的节点，需要谨慎使用。一般通过故障转移机制可以解决这个问题。<br>6、psync命令的使用方式<br>命令格式为  psync{runId}{offset}<br>runId：从节点所复制主节点的运行 id<br>offset：当前从节点已复制的数据偏移量<br>7、psync执行流程<br><img src="/2019/07/30/5-分钟带你搞定-Redis-复制/redis1.png" alt="数据同步"></p>
 </blockquote>
-<h2 id="CPU-性能"><a href="#CPU-性能" class="headerlink" title="CPU 性能"></a>CPU 性能</h2><blockquote>
-<p>1.多任务竞争 CPU，cpu 变换任务的时候进行 CPU 上下文切换(context switch)。CPU 执行任务有 4 种方式：进程、线程、或者硬件通过触发信号导致中断的调用。<br>2、当切换任务的时候，需要记录任务当前的状态和获取下一任务的信息和地址(指针)，这就是上下文的内容。因此，上下文是指某一时间点 CPU 寄存器(CPU register)和程序计数器(PC)的内容, 广义上还包括内存中进程的虚拟地址映射信息.<br>3、上下文切换的过程：<br>(1)记录当前任务的上下文(即寄存器和计算器等所有的状态)；<br>(2)找到新任务的上下文并加载；<br>(3)切换到新任务的程序计算器位置，恢复其任务。<br>4、根据任务的执行形式，相应的下上文切换，有进程上下文切换、线程上下文切换、以及中断上下文切换三类。<br>5、进程和线程的区别：<br>进程是资源分配和执行的基本单位；线程是任务调度和运行的基本单位。线程没有资源，进程给指针提供虚拟内存、栈、变量等共享资源，而线程可以共享进程的资源。<br>6、进程上下文切换：是指从一个进程切换到另一个进程。<br>(1)进程运行态为内核运行态和进程运行态。内核空间态资源包括内核的堆栈、寄存器等；用户空间态资源包括虚拟内存、栈、变量、正文、数据等<br>(2)系统调用(软中断)在内核态完成的，需要进行 2 次 CPU 上下文切换(用户空间–&gt;内核空间–&gt;用户空间)，不涉及用户态资源，也不会切换进程<br>(3)进程是由内核来管理和调度的，进程的切换只能发生在内核态。所以，进程的上下文不仅包括了用户空间的资源，也包括内核空间资源。<br>(4)进程的上下文切换过程：<br>(a)接收到切换信号，挂起进程，记录当前进程的虚拟内存、栈等资源存储;<br>(b)将这个进程在 CPU 中的上下文状态存储于起来;<br>(c)然后在内存中检索下一个进程的上下文;<br>(d)并将其加载到 CPU 的寄存器中恢复;<br>(e)还需要刷新进程的虚拟内存和用户栈;<br>(f)最后跳转到程序计数器所指向的位置（即跳转到进程被中断时的代码行），以恢复该进程。<br>(5)、下列将会触发进程上下文切换的场景：<br>(a)、根据调度策略，将 CPU 时间划片为对应的时间片，当时间片耗尽，当前进程必须挂起。<br>(b)、资源不足的，在获取到足够资源之前进程挂起。<br>(c)、进程 sleep 挂起进程。<br>(d)、高优先级进程导致当前进度挂起<br>(e)、硬件中断，导致当前进程挂起<br>7、线程上下文切换：<br>(1)、不通进程之间的线程上下文切换，其过程和进程上下文切换大致相同。<br>(2)、进程内部的线程进上下文切换。不需要切换进程的用户资源，只需要切换线程私有的数据和寄存器等。这会比进程上下文进程切换消耗的资源少，所以多线程相比多进程的优势。<br>8、中断上下文切换<br>快速响应硬件的事件，中断处理会打断进程的正常调度和执行。同一 CPU 内，硬件中断优先级高于进程。切换过程类似于系统调用的时候，不涉及到用户运行态资源。但大量的中断上下文切换同样可能引发性能问题。</p>
+<p>###流程说明：</p>
+<blockquote>
+<p>从节点发送 psync 命令给主节点，runId 就是目标主节点的 ID，如果没有默认为 -1，offset 是从节点保存的复制偏移量，如果是第一次复制则为 -1.主节点会根据 runid 和 offset 决定返回结果：<br>如果回复 +FULLRESYNC {runId} {offset} ，那么从节点将触发全量复制流程。<br>如果回复 +CONTINUE，从节点将触发部分复制。<br>如果回复 +ERR，说明主节点不支持 2.8 的 psync 命令，将使用 sync 执行全量复制。<br>到这里，数据之间的同步就讲的差不多了，篇幅还是比较长的。主要是针对 psync 命令相关之间的介绍。</p>
 </blockquote>
-<h3 id="排查-cpu-负载"><a href="#排查-cpu-负载" class="headerlink" title="排查 cpu 负载"></a>排查 cpu 负载</h3><blockquote>
-<p>1.用户 CPU 和 Nice CPU 高，说明用户态进程占用了较多的 CPU，所以应该着重排查进程的性能问题。<br>2.系统 CPU 高，说明内核态占用了较多的 CPU，所以应该着重排查内核线程或者系统调用的性能问题。<br>3.I/O 等待 CPU 高，说明等待 I/O 的时间比较长，所以应该着重排查系统存储是不是出现了 I/O 问题。<br>4.软中断和硬中断高，说明软中断或硬中断的处理程序占用了较多的 CPU，所以应该着重排查内核中的中断服务程序。</p>
+<p>###三、全量复制</p>
+<blockquote>
+<p>全量复制是 Redis 最早支持的复制方式，也是主从第一次建立复制时必须经历的的阶段。触发全量复制的命令是 sync 和 psync。之前说过，这两个命令的分水岭版本是 2.8，redis 2.8 之前使用 sync 只能执行全量不同，2.8 之后同时支持全量同步和部分同步。<br><img src="/2019/07/30/5-分钟带你搞定-Redis-复制/redis2.png" alt="全量复制"><br>流程如下：<br>Step 1：发送 psync 命令（spync ？-1）<br>Step 2：主节点根据命令返回 FULLRESYNC<br>Step 3：从节点记录主节点 ID 和 offset<br>Step 4：主节点 bgsave 并保存 RDB 到本地<br>Step 5：主节点发送 RBD 文件到从节点<br>Step 6：从节点收到 RDB 文件并加载到内存中<br>Step 7：主节点在从节点接受数据的期间，将新数据保存到“复制客户端缓冲区”，当从节点加载 RDB 完毕，再发送过去。（如果从节点花费时间过长，将导致缓冲区溢出，最后全量同步失败）<br>Step 8：从节点清空数据后加载 RDB 文件，如果 RDB 文件很大，这一步操作仍然耗时，如果此时客户端访问，将导致数据不一致，可以使用配置slave-server-stale-data 关闭.<br>Step 9：从节点成功加载完 RBD 后，如果开启了 AOF，会立刻做 bgrewriteaof。<br>以上加粗的部分是整个全量同步耗时的地方。</p>
 </blockquote>
-<h2 id="排查方法"><a href="#排查方法" class="headerlink" title="排查方法"></a>排查方法</h2><blockquote>
-<p>如果应用方说系统负载卡 1.首先看看系统平均负载，1 分钟 5 分钟 15 分钟 查看趋势 2.如果平均负载高，先判断是 io 导致，还是 cpu 导致或者是中断导致<br>用 top 查看 看看哪个方面的比较高 或者 mpstat -p ALL 5<br>如果是 io 导致:<br>用 iotop iostat 判断是哪个程序 io 比较频繁，或者读写次数特别多，从而进一步分析<br>如果是 cpu 比较高导致:<br>用 ps -ef 或者 top -U 或者 pidstat 查看哪个进程导致的 cpu 较高，从而进一步分析<br>如果是中断高可以看到<br>如果只看到负载高 但是看不到其他的任何异常，那么用神器 perf top (perf record -g [and] perf report)</p>
+<pre><code>注意：
+如过 RDB 文件大于 6GB，并且是千兆网卡，Redis 的默认超时机制（60 秒），会导致全量复制失败。可以通过调大 repl-timeout 参数来解决此问题。
+Redis 虽然支持无盘复制，即直接通过网络发送给从节点，但功能不是很完善，生产环境慎用。</code></pre><p>###四、部分复制</p>
+<p>当从节点正在复制主节点时，如果出现网络闪断和其他异常，从节点会让主节点补发丢失的命令数据，主节点只需要将复制缓冲区的数据发送到从节点就能够保证数据的一致性，相比较全量复制，成本小很多。</p>
+<blockquote>
+<p><img src="/2019/07/30/5-分钟带你搞定-Redis-复制/redis3.png" alt="部分复制"><br>当从节点出现网络中断，超过了 repl-timeout 时间，主节点就会中断复制连接。<br>主节点会将请求的数据写入到“复制积压缓冲区”，默认 1MB。<br>当从节点恢复，重新连接上主节点，从节点会将 offset 和主节点 id 发送到主节点。<br>主节点校验后，如果偏移量的数后的数据在缓冲区中，就发送 cuntinue 响应 —— 表示可以进行部分复制。<br>主节点将缓冲区的数据发送到从节点，保证主从复制进行正常状态。</p>
+</blockquote>
+<p>###五、心跳</p>
+<p>主从节点在建立复制后，他们之间维护着长连接并彼此发送心跳命令。</p>
+<blockquote>
+<p>心跳的关键机制如下：<br>中从都有心跳检测机制，各自模拟成对方的客户端进行通信，通过 client list 命令查看复制相关客户端信息，主节点的连接状态为 flags = M，从节点的连接状态是 flags = S。<br>主节点默认每隔 10 秒对从节点发送 ping 命令，可修改配置 repl-ping-slave-period 控制发送频率。<br>从节点在主线程每隔一秒发送 replconf ack{offset} 命令，给主节点上报自身当前的复制偏移量。<br>主节点收到 replconf 信息后，判断从节点超时时间，如果超过 repl-timeout 60 秒，则判断节点下线。<br><img src="/2019/07/30/5-分钟带你搞定-Redis-复制/redis4.png" alt="心跳"></p>
+</blockquote>
+<p>注意：</p>
+<p>为了降低主从延迟，一般把 redis 主从节点部署在相同的机房/同城机房，避免网络延迟带来的网络分区造成的心跳中断等情况。</p>
+<p>###六、异步复制</p>
+<p>主节点不但负责数据读写，还负责把写命令同步给从节点，写命令的发送过程是异步完成，也就是说主节点处理完写命令后立即返回客户度，并不等待从节点复制完成。</p>
+<blockquote>
+<p>异步复制的步骤很简单，如下：<br>Step 1：主节点接受处理命令。<br>Step 2：主节点处理完后返回响应结果 。<br>Step 3：对于修改命令，异步发送给从节点，从节点在主线程中执行复制的命令<br><img src="/2019/07/30/5-分钟带你搞定-Redis-复制/redis5.png" alt="异步复制"></p>
+</blockquote>
+<p>###七、总结</p>
+<p>本文主要分析了 Redis 的复制原理，包括复制过程，数据之间的同步，全量复制的流程，部分复制的流程，心跳设计，异步复制流程。</p>
+<blockquote>
+<p>其中，可以看出，RDB 数据之间的同步非常耗时。所以，Redis 在 2.8 版本退出了类似增量复制的 psync 命令，当 Redis 主从直接发生了网络中断，不会进行全量复制，而是将数据放到缓冲区（默认 1MB）里，再通过主从之间各自维护复制 offset 来判断缓存区的数据是否溢出。如果没有溢出，只需要发送缓冲区数据即可，成本很小；反之，则要进行全量复制。因此控制缓冲区大小非常的重要。</p>
 </blockquote>
 
       
@@ -461,12 +467,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>系统负载</p>
+    <p><span class="copy-title">文章标题:</span>5 分钟带你搞定 Redis 复制</p>
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="jame_xhs">jame_xhs</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-07-22, 22:18:27</p>
-    <p><span class="copy-title">最后更新:</span>2019-07-27, 01:10:39</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/07/22/系统负载/" title="系统负载">http://www.jxhs.me/2019/07/22/系统负载/</a>
+    <p><span class="copy-title">发布时间:</span>2019-07-30, 11:41:18</p>
+    <p><span class="copy-title">最后更新:</span>2019-07-30, 12:14:41</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/07/30/5-分钟带你搞定-Redis-复制/" title="5 分钟带你搞定 Redis 复制">http://www.jxhs.me/2019/07/30/5-分钟带你搞定-Redis-复制/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
