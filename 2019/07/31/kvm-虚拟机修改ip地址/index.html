@@ -250,14 +250,6 @@
         </a>
         
         <a  class=""
-           href="/2019/07/31/kvm-虚拟机修改ip地址/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="kvm 虚拟机修改ip地址">kvm 虚拟机修改ip地址</span>
-            <span class="post-date" title="2019-07-31 23:20:18">2019/07/31</span>
-        </a>
-        
-        <a  class=""
            href="/2019/07/29/kubernetes-ingress之nginx-ingress/"
            data-tag=""
            data-author="" >
@@ -271,6 +263,14 @@
            data-author="" >
             <span class="post-title" title="netfilter 和 iptables">netfilter 和 iptables</span>
             <span class="post-date" title="2019-07-30 23:03:01">2019/07/30</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/07/31/kvm-虚拟机修改ip地址/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="kvm 虚拟机修改ip地址">kvm 虚拟机修改ip地址</span>
+            <span class="post-date" title="2019-07-31 23:20:18">2019/07/31</span>
         </a>
         
         <a  class="编程 "
@@ -314,19 +314,19 @@
         </a>
         
         <a  class="系统 "
-           href="/2019/07/22/系统负载/"
-           data-tag="负载"
-           data-author="" >
-            <span class="post-title" title="系统负载">系统负载</span>
-            <span class="post-date" title="2019-07-22 22:18:27">2019/07/22</span>
-        </a>
-        
-        <a  class="系统 "
            href="/2019/07/19/系统网络篇/"
            data-tag=""
            data-author="" >
             <span class="post-title" title="系统网络篇">系统网络篇</span>
             <span class="post-date" title="2019-07-19 13:59:54">2019/07/19</span>
+        </a>
+        
+        <a  class="系统 "
+           href="/2019/07/22/系统负载/"
+           data-tag="负载"
+           data-author="" >
+            <span class="post-title" title="系统负载">系统负载</span>
+            <span class="post-date" title="2019-07-22 22:18:27">2019/07/22</span>
         </a>
         
         <a  class="编程 "
@@ -385,7 +385,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-08-02 23:17:18'>2019-07-31 23:20</time>
+        创建时间:<time class="date" title='更新时间: 2019-08-02 23:36:49'>2019-07-31 23:20</time>
         
     </div>
     <div class="article-meta">
@@ -426,7 +426,7 @@
 <p>背景:由于kvm虚拟机没有图形化界面，导致模版克隆的虚拟机更改ip很不方便。需要一台台手动登陆去修改，而libguestfs-tools工具能做到给克隆出来的虚拟机更改ip，写成脚本后非常方便使用。</p>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><pre><code>yum -y install libguestfs-tools</code></pre></blockquote>
 <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><blockquote>
-<p>libguestfs-tools工具的部分命令使用方便，但是执行速度不是很快，下面只对一些常用命令进行介绍<br><img src="/2019/07/31/kvm-虚拟机修改ip地址/virt.png" alt="libguestfs-tools工具命令"></p>
+<p>libguestfs-tools工具的部分命令使用方便，但是执行速度不是很快，下面只对一些常用命令进行介绍<br><img src="/2019/07/31/kvm-虚拟机修改ip地址/virt.png" alt="libguestfs-tools工具命令"><br>1.virt-df<br>介绍：类似于虚拟机本地“df”命令<br><img src="/2019/07/31/kvm-虚拟机修改ip地址/df.png" alt="virt-df"><br>2.virt-cat<br>介绍：类似于虚拟机本地“cat”命令<br><img src="/2019/07/31/kvm-虚拟机修改ip地址/cat.png" alt="virt-cat"><br>3.virt-edit<br>介绍：类似于虚拟机本地”vi”命令，使用这个命令需要关闭虚拟机<br><img src="/2019/07/31/kvm-虚拟机修改ip地址/df.png" alt="virt-edit"><br>4.virt-ls<br>介绍：类似于虚拟机本地”ls”命令<br><img src="/2019/07/31/kvm-虚拟机修改ip地址/ls.png" alt="virt-ls"><br>5.virt-copy-out<br>介绍：复制虚拟机文件到宿主机本地磁盘，类似于本地”cp”命令<br><img src="/2019/07/31/kvm-虚拟机修改ip地址/copy-out.png" alt="virt-copy-out"><br>6.virt-copy-in<br>介绍：复制宿主机本地文件到虚拟机磁盘，类似于本地”cp”命令<br><img src="/2019/07/31/kvm-虚拟机修改ip地址/copy-in.png" alt="virt-copy-in"></p>
 </blockquote>
 
       
@@ -445,7 +445,7 @@
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="jame_xhs">jame_xhs</a></p>
     <p><span class="copy-title">发布时间:</span>2019-07-31, 23:20:18</p>
-    <p><span class="copy-title">最后更新:</span>2019-08-02, 23:17:18</p>
+    <p><span class="copy-title">最后更新:</span>2019-08-02, 23:36:49</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/07/31/kvm-虚拟机修改ip地址/" title="kvm 虚拟机修改ip地址">http://www.jxhs.me/2019/07/31/kvm-虚拟机修改ip地址/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
