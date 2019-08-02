@@ -103,14 +103,6 @@
     
         
             
-            <li><div data-rel="编程">编程<small>(3)</small></div>
-                
-            </li>
-            
-        
-    
-        
-            
             <li><div data-rel="容器">容器<small>(1)</small></div>
                 
             </li>
@@ -119,7 +111,7 @@
     
         
             
-            <li><div data-rel="有感而发">有感而发<small>(1)</small></div>
+            <li><div data-rel="编程">编程<small>(3)</small></div>
                 
             </li>
             
@@ -128,6 +120,14 @@
         
             
             <li><div data-rel="系统">系统<small>(3)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="有感而发">有感而发<small>(1)</small></div>
                 
             </li>
             
@@ -208,11 +208,11 @@
     <div class="tags-list">
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color2">golang</a>
+        <a href="javascript:" class="color2">docker</a>
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color2">docker</a>
+        <a href="javascript:" class="color2">golang</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -233,20 +233,20 @@
     
     <nav id="title-list-nav">
         
-        <a  class="编程 "
-           href="/2019/07/19/golang/"
-           data-tag="golang"
-           data-author="" >
-            <span class="post-title" title="golang">golang</span>
-            <span class="post-date" title="2019-07-19 16:23:32">2019/07/19</span>
-        </a>
-        
         <a  class="容器 "
            href="/2019/07/28/docker运行容器后agetty进程cpu占用率100/"
            data-tag="docker"
            data-author="" >
             <span class="post-title" title="docker运行容器后agetty进程cpu占用率100%">docker运行容器后agetty进程cpu占用率100%</span>
             <span class="post-date" title="2019-07-28 14:23:32">2019/07/28</span>
+        </a>
+        
+        <a  class="编程 "
+           href="/2019/07/19/golang/"
+           data-tag="golang"
+           data-author="" >
+            <span class="post-title" title="golang">golang</span>
+            <span class="post-date" title="2019-07-19 16:23:32">2019/07/19</span>
         </a>
         
         <a  class=""
@@ -281,20 +281,20 @@
             <span class="post-date" title="2019-07-19 16:23:27">2019/07/19</span>
         </a>
         
-        <a  class="有感而发 "
-           href="/2019/07/19/有感而发/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="有感而发">有感而发</span>
-            <span class="post-date" title="2019-07-19 16:07:02">2019/07/19</span>
-        </a>
-        
         <a  class="系统 "
            href="/2019/07/25/性能判断专栏/"
            data-tag="系统"
            data-author="" >
             <span class="post-title" title="性能判断专栏">性能判断专栏</span>
             <span class="post-date" title="2019-07-25 20:54:52">2019/07/25</span>
+        </a>
+        
+        <a  class="有感而发 "
+           href="/2019/07/19/有感而发/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="有感而发">有感而发</span>
+            <span class="post-date" title="2019-07-19 16:07:02">2019/07/19</span>
         </a>
         
         <a  class="杂项 "
@@ -314,19 +314,19 @@
         </a>
         
         <a  class="系统 "
-           href="/2019/07/19/系统网络篇/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="系统网络篇">系统网络篇</span>
-            <span class="post-date" title="2019-07-19 13:59:54">2019/07/19</span>
-        </a>
-        
-        <a  class="系统 "
            href="/2019/07/22/系统负载/"
            data-tag="负载"
            data-author="" >
             <span class="post-title" title="系统负载">系统负载</span>
             <span class="post-date" title="2019-07-22 22:18:27">2019/07/22</span>
+        </a>
+        
+        <a  class="系统 "
+           href="/2019/07/19/系统网络篇/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="系统网络篇">系统网络篇</span>
+            <span class="post-date" title="2019-07-19 13:59:54">2019/07/19</span>
         </a>
         
         <a  class="编程 "
@@ -541,7 +541,7 @@ Redis 虽然支持无盘复制，即直接通过网络发送给从节点，但�
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#golang','#docker','#python','#系统','#负载',],
+            'data': ['#docker','#golang','#python','#系统','#负载',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');
