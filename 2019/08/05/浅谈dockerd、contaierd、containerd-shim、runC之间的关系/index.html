@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>python | jame_xhs&#39;s blog</title>
-  <meta name="keywords" content=" python ">
-  <meta name="description" content="python | jame_xhs&#39;s blog">
+  <title>浅谈dockerd、contaierd、containerd-shim、runC之间的关系 | jame_xhs&#39;s blog</title>
+  <meta name="keywords" content>
+  <meta name="description" content="浅谈dockerd、contaierd、containerd-shim、runC之间的关系 | jame_xhs&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="个人介绍一名来自湖北武汉的运维开发工程师，个人爱好很多，比如算法，单片机（创业方向：少儿编程），Linux内核 python，以及很多很多的东西。但是都不怎么专，半桶水的样子。 希望以后一直在运维行业内呆着。可能写一些自己平台。或者好用的工具。但是自己的定位还是运维。  短期计划1.尝试深入理解Linux内核，独立编写一个简单的内核 2.一周两个算法AJ题目。持续下去 3.一周看四个小时以上的书">
 <meta property="og:type" content="website">
@@ -381,31 +381,19 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-python" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-浅谈dockerd、contaierd、containerd-shim、runC之间的关系" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">python</h1>
+        <h1 class="article-title">浅谈dockerd、contaierd、containerd-shim、runC之间的关系</h1>
     
     <div class="article-meta">
         
         
         
-        <span class="book">
-            
-                <a href="javascript:" data-rel="编程">编程</a>
-            
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="javascript:" class="color2">python</a>
-            
-        </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-07-20 19:32:09'>2019-07-19 16:23</time>
+        创建时间:<time class="date" title='更新时间: 2019-08-05 11:33:31'>2019-08-05 10:52</time>
         
     </div>
     <div class="article-meta">
@@ -427,7 +415,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#组件大纲"><span class="toc-text">组件大纲</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#docker"><span class="toc-text">docker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dockerd"><span class="toc-text">dockerd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#containerd"><span class="toc-text">containerd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#containerd-shim"><span class="toc-text">containerd-shim</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#runC"><span class="toc-text">runC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最后插一张docker内部通信图"><span class="toc-text">最后插一张docker内部通信图</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -442,7 +430,38 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>“少啰嗦，先看东西”<br><img src="/2019/08/05/浅谈dockerd、contaierd、containerd-shim、runC之间的关系/docker.png" alt="docker启动容器流程图"></p>
+<h2 id="组件大纲"><a href="#组件大纲" class="headerlink" title="组件大纲"></a>组件大纲</h2><blockquote>
+<p>1.docker<br>2.dockerd<br>3.containerd<br>4.containerd-shim<br>5.runC</p>
+</blockquote>
+<h3 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h3><blockquote>
+<p>docker 的命令行工具，是给用户和 docker daemon 建立通信的客户端。</p>
+</blockquote>
+<h3 id="dockerd"><a href="#dockerd" class="headerlink" title="dockerd"></a>dockerd</h3><blockquote>
+<p>dockerd 是 docker 架构中一个常驻在后台的系统进程，称为 docker daemon，dockerd 实际调用的还是 containerd 的 api 接口（rpc 方式实现）,docker daemon 的作用主要有以下两方面：</p>
+<p>接收并处理 docker client 发送的请求<br>管理所有的 docker 容器</p>
+<p>有了 containerd 之后，dockerd 可以独立升级，以此避免之前 dockerd 升级会导致所有容器不可用的问题。</p>
+</blockquote>
+<h3 id="containerd"><a href="#containerd" class="headerlink" title="containerd"></a>containerd</h3><blockquote>
+<p>containerd 是 dockerd 和 runc 之间的一个中间交流组件，docker 对容器的管理和操作基本都是通过 containerd 完成的。containerd 的主要功能有：</p>
+<p>容器生命周期管理<br>日志管理<br>镜像管理<br>存储管理<br>容器网络接口及网络管理</p>
+</blockquote>
+<h3 id="containerd-shim"><a href="#containerd-shim" class="headerlink" title="containerd-shim"></a>containerd-shim</h3><blockquote>
+<p>containerd-shim 是一个真实运行容器的载体，每启动一个容器都会起一个新的containerd-shim的一个进程， 它直接通过指定的三个参数：容器id，boundle目录（containerd 对应某个容器生成的目录，一般位于：/var/run/docker/libcontainerd/containerID，其中包括了容器配置和标准输入、标准输出、标准错误三个管道文件），运行时二进制（默认为runC）来调用 runc 的 api 创建一个容器，上面的 docker 进程图中可以直观的显示。其主要作用是：</p>
+<p>它允许容器运行时(即 runC)在启动容器之后退出，简单说就是不必为每个容器一直运行一个容器运行时(runC)<br>即使在 containerd 和 dockerd 都挂掉的情况下，容器的标准 IO 和其它的文件描述符也都是可用的<br>向 containerd 报告容器的退出状态</p>
+<p>有了它就可以在不中断容器运行的情况下升级或重启 dockerd，对于生产环境来说意义重大。<br>运行是二进制（默认为runc）来调用runc的api创建一个容器（比如创建容器：最后拼装的命令如下：runc create 。。。。。）</p>
+</blockquote>
+<h3 id="runC"><a href="#runC" class="headerlink" title="runC"></a>runC</h3><blockquote>
+<p>简单的说，runC是一个命令行工具，用来运行按照OCI标准格式打包过的应用</p>
+</blockquote>
+<p>启动一个容器的过程如下：</p>
+<blockquote>
+<p>1.用户在命令行执行 <code>docker run -itd busybox</code> 由docker client 通过grpc将指令传给dockerd<br>2.docker daemon请检查本机是否存在docker镜像文件，如果有继续往下执行<br>3.dockerd会向host os 请求创建容器<br>4.linux会创建一个空的容器(cgroup namespace),并启动containerd-shim进程。<br>5.containerd-shim拿到三个参数(容器id，boundle目录，运行时二进制文件runc )来调用runC的api<br>6.runC提取镜像文件，生成容器配置文件，然后启动容器</p>
+</blockquote>
+<h3 id="最后插一张docker内部通信图"><a href="#最后插一张docker内部通信图" class="headerlink" title="最后插一张docker内部通信图"></a>最后插一张docker内部通信图</h3><blockquote>
+<p><img src="/2019/08/05/浅谈dockerd、contaierd、containerd-shim、runC之间的关系/tongxin.png" alt="docker内部通信"></p>
+</blockquote>
+
       
        
     </div>
@@ -455,12 +474,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>python</p>
+    <p><span class="copy-title">文章标题:</span>浅谈dockerd、contaierd、containerd-shim、runC之间的关系</p>
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="jame_xhs">jame_xhs</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-07-19, 16:23:27</p>
-    <p><span class="copy-title">最后更新:</span>2019-07-20, 19:32:09</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/07/19/python/" title="python">http://www.jxhs.me/2019/07/19/python/</a>
+    <p><span class="copy-title">发布时间:</span>2019-08-05, 10:52:41</p>
+    <p><span class="copy-title">最后更新:</span>2019-08-05, 11:33:31</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/08/05/浅谈dockerd、contaierd、containerd-shim、runC之间的关系/" title="浅谈dockerd、contaierd、containerd-shim、runC之间的关系">http://www.jxhs.me/2019/08/05/浅谈dockerd、contaierd、containerd-shim、runC之间的关系/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
