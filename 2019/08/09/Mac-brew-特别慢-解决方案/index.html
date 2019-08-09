@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>about | jame_xhs&#39;s blog</title>
+  <title>Mac brew 特别慢 解决方案  | jame_xhs&#39;s blog</title>
   <meta name="keywords" content>
-  <meta name="description" content="about | jame_xhs&#39;s blog">
+  <meta name="description" content="Mac brew 特别慢 解决方案  | jame_xhs&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="个人介绍一名来自湖北武汉的运维开发工程师，个人爱好很多，比如算法，单片机（创业方向：少儿编程），Linux内核 python，以及很多很多的东西。但是都不怎么专，半桶水的样子。 希望以后一直在运维行业内呆着。可能写一些自己平台。或者好用的工具。但是自己的定位还是运维。  短期计划1.尝试深入理解Linux内核，独立编写一个简单的内核 2.一周两个算法AJ题目。持续下去 3.一周看四个小时以上的书">
 <meta property="og:type" content="website">
@@ -397,9 +397,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+        <article id="post-Mac-brew-特别慢-解决方案" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">about</h1>
+        <h1 class="article-title">Mac brew 特别慢 解决方案 </h1>
     
     <div class="article-meta">
         
@@ -409,7 +409,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-07-22 22:22:15'>2019-07-20 18:45</time>
+        创建时间:<time class="date" title='更新时间: 2019-08-09 14:13:18'>2019-08-09 14:09</time>
         
     </div>
     <div class="article-meta">
@@ -431,7 +431,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#个人介绍"><span class="toc-text">个人介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#短期计划"><span class="toc-text">短期计划</span></a></li></ol>
+        
     
 <style>
     .left-col .switch-btn,
@@ -446,14 +446,12 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="个人介绍"><a href="#个人介绍" class="headerlink" title="个人介绍"></a>个人介绍</h2><p>一名来自湖北武汉的运维开发工程师，个人爱好很多，比如算法，单片机（创业方向：少儿编程），Linux内核</p>
-<p>python，以及很多很多的东西。但是都不怎么专，半桶水的样子。</p>
-<p>希望以后一直在运维行业内呆着。可能写一些自己平台。或者好用的工具。但是自己的定位还是运维。</p>
-<hr>
-<h2 id="短期计划"><a href="#短期计划" class="headerlink" title="短期计划"></a>短期计划</h2><p>1.尝试深入理解Linux内核，独立编写一个简单的内核</p>
-<p>2.一周两个算法AJ题目。持续下去</p>
-<p>3.一周看四个小时以上的书</p>
-<p>4.深入学习k8s相关生态</p>
+        <p>众所周知，brew是mac下最好的下载软件工具，类似与yum、apt有过之而不急。(如果没听过，请关闭该网页)</p>
+<p>接下来解决特别慢的问题。<br>1.按照常规安装安装好brew<br><code>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</code><br>2.替换brew.git:</p>
+<pre><code>cd &quot;$(brew --repo)&quot;
+git remote set-url origin https://mirrors.ustc.edu.cn/brew.git</code></pre><p>3.替换homebrew-core.git:</p>
+<pre><code>cd &quot;$(brew --repo)/Library/Taps/homebrew/homebrew-core&quot;
+git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git </code></pre><p>4.愉快的玩耍。</p>
 
       
        
@@ -465,6 +463,18 @@
     <a href="javascript:void(0)" class="dashang" onclick="dashangToggle()">赏</a>
 </p>
 
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>Mac brew 特别慢 解决方案 </p>
+    
+    <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="jame_xhs">jame_xhs</a></p>
+    <p><span class="copy-title">发布时间:</span>2019-08-09, 14:09:35</p>
+    <p><span class="copy-title">最后更新:</span>2019-08-09, 14:13:18</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/08/09/Mac-brew-特别慢-解决方案/" title="Mac brew 特别慢 解决方案 ">http://www.jxhs.me/2019/08/09/Mac-brew-特别慢-解决方案/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
 
 
 
