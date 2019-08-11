@@ -1,7 +1,8 @@
 ---
 title: kvm 虚拟机修改ip地址
 date: 2019-07-31 23:20:18
-tags:
+categories: 虚拟化
+tags: kvm
 ---
 ## KVM虚拟化之libguestfs-tools工具常用命令介绍
 > 背景:由于kvm虚拟机没有图形化界面，导致模版克隆的虚拟机更改ip很不方便。需要一台台手动登陆去修改，而libguestfs-tools工具能做到给克隆出来的虚拟机更改ip，写成脚本后非常方便使用。

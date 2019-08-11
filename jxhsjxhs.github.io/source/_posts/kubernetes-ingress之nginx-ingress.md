@@ -1,7 +1,8 @@
 ---
 title: kubernetes ingress之nginx-ingress
 date: 2019-07-29 15:56:12
-tags:
+categories: 容器
+tags: k8s
 ---
 
 

@@ -1,7 +1,8 @@
 ---
 title: 'Mac brew 特别慢 解决方案 '
 date: 2019-08-09 14:09:35
-tags:
+categories: 杂项 
+tags: mac
 ---
 
 众所周知，brew是mac下最好的下载软件工具，类似与yum、apt有过之而不及。(如果没听过，请关闭该网页)
