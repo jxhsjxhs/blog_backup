@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>系统负载 | jame_xhs&#39;s blog</title>
-  <meta name="keywords" content=" 负载 ">
-  <meta name="description" content="系统负载 | jame_xhs&#39;s blog">
+  <title>论营销 | jame_xhs&#39;s blog</title>
+  <meta name="keywords" content>
+  <meta name="description" content="论营销 | jame_xhs&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="个人介绍一名来自湖北武汉的运维开发工程师，个人爱好很多，比如算法，单片机（创业方向：少儿编程），Linux内核 python，以及很多很多的东西。但是都不怎么专，半桶水的样子。 希望以后一直在运维行业内呆着。可能写一些自己平台。或者好用的工具。但是自己的定位还是运维。  短期计划1.尝试深入理解Linux内核，独立编写一个简单的内核 2.一周两个算法AJ题目。持续下去 3.一周看四个小时以上的书">
 <meta property="og:type" content="website">
@@ -465,31 +465,19 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-系统负载" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-论营销" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">系统负载</h1>
+        <h1 class="article-title">论营销</h1>
     
     <div class="article-meta">
         
         
         
-        <span class="book">
-            
-                <a href="javascript:" data-rel="系统">系统</a>
-            
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="javascript:" class="color3">负载</a>
-            
-        </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-08-11 00:15:00'>2019-07-22 22:18</time>
+        创建时间:<time class="date" title='更新时间: 2019-08-30 11:07:54'>2019-08-30 11:07</time>
         
     </div>
     <div class="article-meta">
@@ -511,7 +499,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#负载变高有三个原因："><span class="toc-text">负载变高有三个原因：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mpstat"><span class="toc-text">mpstat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pidstat"><span class="toc-text">pidstat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vmstat"><span class="toc-text">vmstat</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CPU-性能"><span class="toc-text">CPU 性能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#排查-cpu-负载"><span class="toc-text">排查 cpu 负载</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#排查方法"><span class="toc-text">排查方法</span></a></li></ol>
+        
     
 <style>
     .left-col .switch-btn,
@@ -526,37 +514,7 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="负载变高有三个原因："><a href="#负载变高有三个原因：" class="headerlink" title="负载变高有三个原因："></a>负载变高有三个原因：</h2><blockquote>
-<p>1.CPU 密集型进程，使用大量 CPU 会知道平均负载升高。<br>2.I/O 密集型进程，等到 I/O 也会导致平均负载升高，但是 CPU 使用率不一定很高。 3.大量等待 CPU 的进程调度也会导致平均负载升高，此时 CPU 使用率也会比较高。</p>
-</blockquote>
-<center> iostat mpstat pidstat vmstat perf top</center>
-
-
-<h3 id="mpstat"><a href="#mpstat" class="headerlink" title="mpstat"></a>mpstat</h3><blockquote>
-<p>mpstat -P ALL 5<br>作用查看 cpu 每个 cpu 使用情况</p>
-</blockquote>
-<h3 id="pidstat"><a href="#pidstat" class="headerlink" title="pidstat"></a>pidstat</h3><blockquote>
-<p>pidstat -u 5 1<br>实时查看进程的 CPU、内存、I/O 以及上下文切换等性能指标</p>
-</blockquote>
-<h3 id="vmstat"><a href="#vmstat" class="headerlink" title="vmstat"></a>vmstat</h3><blockquote>
-<p>vmstat 1<br>查看 系统内存和上下文切换以及切换类型的工具</p>
-</blockquote>
-<blockquote>
-<p>举例：<br>发现系统负载变高时候 1.使用 mpstat -P ALL 5<br>发现是使用率为百分之百 但是 iowait 为 0 说明此时真的有程序使用了百分之百的 CPU，这次负载升高就是此原因</p>
-</blockquote>
-<blockquote>
-<p>2.使用 mpstat -P ALL 5<br>发现系统 CPU 使用率只有百分之 20 多 但是 系统的 iowait 达到了百分之 70 多 这说明这次负载升高是由于 iowait 引起的<br>然后使用 pidstat -u 5 1</p>
-</blockquote>
-<h2 id="CPU-性能"><a href="#CPU-性能" class="headerlink" title="CPU 性能"></a>CPU 性能</h2><blockquote>
-<p>1.多任务竞争 CPU，cpu 变换任务的时候进行 CPU 上下文切换(context switch)。CPU 执行任务有 4 种方式：进程、线程、或者硬件通过触发信号导致中断的调用。<br>2、当切换任务的时候，需要记录任务当前的状态和获取下一任务的信息和地址(指针)，这就是上下文的内容。因此，上下文是指某一时间点 CPU 寄存器(CPU register)和程序计数器(PC)的内容, 广义上还包括内存中进程的虚拟地址映射信息.<br>3、上下文切换的过程：<br>(1)记录当前任务的上下文(即寄存器和计算器等所有的状态)；<br>(2)找到新任务的上下文并加载；<br>(3)切换到新任务的程序计算器位置，恢复其任务。<br>4、根据任务的执行形式，相应的下上文切换，有进程上下文切换、线程上下文切换、以及中断上下文切换三类。<br>5、进程和线程的区别：<br>进程是资源分配和执行的基本单位；线程是任务调度和运行的基本单位。线程没有资源，进程给指针提供虚拟内存、栈、变量等共享资源，而线程可以共享进程的资源。<br>6、进程上下文切换：是指从一个进程切换到另一个进程。<br>(1)进程运行态为内核运行态和进程运行态。内核空间态资源包括内核的堆栈、寄存器等；用户空间态资源包括虚拟内存、栈、变量、正文、数据等<br>(2)系统调用(软中断)在内核态完成的，需要进行 2 次 CPU 上下文切换(用户空间–&gt;内核空间–&gt;用户空间)，不涉及用户态资源，也不会切换进程<br>(3)进程是由内核来管理和调度的，进程的切换只能发生在内核态。所以，进程的上下文不仅包括了用户空间的资源，也包括内核空间资源。<br>(4)进程的上下文切换过程：<br>(a)接收到切换信号，挂起进程，记录当前进程的虚拟内存、栈等资源存储;<br>(b)将这个进程在 CPU 中的上下文状态存储于起来;<br>(c)然后在内存中检索下一个进程的上下文;<br>(d)并将其加载到 CPU 的寄存器中恢复;<br>(e)还需要刷新进程的虚拟内存和用户栈;<br>(f)最后跳转到程序计数器所指向的位置（即跳转到进程被中断时的代码行），以恢复该进程。<br>(5)、下列将会触发进程上下文切换的场景：<br>(a)、根据调度策略，将 CPU 时间划片为对应的时间片，当时间片耗尽，当前进程必须挂起。<br>(b)、资源不足的，在获取到足够资源之前进程挂起。<br>(c)、进程 sleep 挂起进程。<br>(d)、高优先级进程导致当前进度挂起<br>(e)、硬件中断，导致当前进程挂起<br>7、线程上下文切换：<br>(1)、不通进程之间的线程上下文切换，其过程和进程上下文切换大致相同。<br>(2)、进程内部的线程进上下文切换。不需要切换进程的用户资源，只需要切换线程私有的数据和寄存器等。这会比进程上下文进程切换消耗的资源少，所以多线程相比多进程的优势。<br>8、中断上下文切换<br>快速响应硬件的事件，中断处理会打断进程的正常调度和执行。同一 CPU 内，硬件中断优先级高于进程。切换过程类似于系统调用的时候，不涉及到用户运行态资源。但大量的中断上下文切换同样可能引发性能问题。</p>
-</blockquote>
-<h3 id="排查-cpu-负载"><a href="#排查-cpu-负载" class="headerlink" title="排查 cpu 负载"></a>排查 cpu 负载</h3><blockquote>
-<p>1.用户 CPU 和 Nice CPU 高，说明用户态进程占用了较多的 CPU，所以应该着重排查进程的性能问题。<br>2.系统 CPU 高，说明内核态占用了较多的 CPU，所以应该着重排查内核线程或者系统调用的性能问题。<br>3.I/O 等待 CPU 高，说明等待 I/O 的时间比较长，所以应该着重排查系统存储是不是出现了 I/O 问题。<br>4.软中断和硬中断高，说明软中断或硬中断的处理程序占用了较多的 CPU，所以应该着重排查内核中的中断服务程序。</p>
-</blockquote>
-<h2 id="排查方法"><a href="#排查方法" class="headerlink" title="排查方法"></a>排查方法</h2><blockquote>
-<p>如果应用方说系统负载卡 1.首先看看系统平均负载，1 分钟 5 分钟 15 分钟 查看趋势 2.如果平均负载高，先判断是 io 导致，还是 cpu 导致或者是中断导致<br>用 top 查看 看看哪个方面的比较高 或者 mpstat -p ALL 5<br>如果是 io 导致:<br>用 iotop iostat 判断是哪个程序 io 比较频繁，或者读写次数特别多，从而进一步分析<br>如果是 cpu 比较高导致:<br>用 ps -ef 或者 top -U 或者 pidstat 查看哪个进程导致的 cpu 较高，从而进一步分析<br>如果是中断高可以看到<br>如果只看到负载高 但是看不到其他的任何异常，那么用神器 perf top (perf record -g [and] perf report)</p>
-</blockquote>
-
+        
       
        
     </div>
@@ -569,12 +527,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>系统负载</p>
+    <p><span class="copy-title">文章标题:</span>论营销</p>
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="jame_xhs">jame_xhs</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-07-22, 22:18:27</p>
-    <p><span class="copy-title">最后更新:</span>2019-08-11, 00:15:00</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/07/22/系统负载/" title="系统负载">http://www.jxhs.me/2019/07/22/系统负载/</a>
+    <p><span class="copy-title">发布时间:</span>2019-08-30, 11:07:54</p>
+    <p><span class="copy-title">最后更新:</span>2019-08-30, 11:07:54</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/08/30/论营销/" title="论营销">http://www.jxhs.me/2019/08/30/论营销/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
