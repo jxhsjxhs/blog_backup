@@ -792,6 +792,10 @@ div.ac > ul > li:before,
 .nav-left .left-bottom a.about {
   display: inline-block;
 }
+.nav-left .left-bottom a.about.hasFriend {
+  border-right: 1px solid #fff;
+  width: 49%;
+}
 .nav-left .left-bottom a.friends {
   display: inline-block;
 }
@@ -813,7 +817,7 @@ div.ac > ul > li:before,
   user-select: none;
 }
 .nav-right .title-list {
-  margin-left: 0px;
+  margin-left: 0;
   transition: margin-left 0.5s;
 }
 .nav-right .title-list.friend {
@@ -823,7 +827,7 @@ div.ac > ul > li:before,
   height: 65px;
   border-bottom: 1px solid #e5e8ec;
   position: absolute;
-  top: 0px;
+  top: 0;
   width: 100%;
 }
 .nav-right .title-list form .cross {
@@ -841,8 +845,8 @@ div.ac > ul > li:before,
 .nav-right .title-list form .search {
   width: 250px;
   margin-top: 12px;
-  padding: 20px 0px 0px 20px;
-  color: #2eb695;
+  padding: 20px 0 0 20px;
+  color: #383636;
   font-size: 18px;
   font-family: inherit;
   background: inherit;
@@ -890,7 +894,7 @@ div.ac > ul > li:before,
   outline: 0;
 }
 .nav-right .title-list form span #tagsWitchIcon:after {
-  left: 0px;
+  left: 0;
   content: '';
   width: 14px;
   height: 14px;
@@ -1091,7 +1095,7 @@ div.ac > ul > li:before,
 .nav-right .title-list nav a .post-date,
 .nav-right .title-list #local-search-result a .post-date {
   font-size: 15px;
-  margin: 8px 0px;
+  margin: 8px 0;
   padding-right: 3px;
   color: #9aa4af;
   float: right;
@@ -1103,7 +1107,7 @@ div.ac > ul > li:before,
   position: absolute;
 }
 .nav-right .friends-area.friend {
-  margin-left: 0px;
+  margin-left: 0;
 }
 .nav-right .friends-area .friends-title {
   height: 66px;
@@ -1122,6 +1126,10 @@ div.ac > ul > li:before,
 .nav-right .friends-area .friends-title .back-title-list:before {
   cursor: pointer;
   content: "\e968";
+}
+.nav-right .friends-area .friends-content {
+  overflow-y: auto;
+  height: calc(100vh - 66px);
 }
 .nav-right .friends-area .friends-content a {
   line-height: 30px;
@@ -1455,12 +1463,14 @@ div.ac > ul > li:before,
 .post .pjax article figure {
   margin: 0;
   padding: 10px 0;
+  text-align: center;
 }
 .post .pjax article img {
-  max-width: 100%;
-  display: block;
+  max-width: 95%;
+  display: inline-block;
   margin: auto;
   cursor: zoom-in;
+  padding: 1px;
 }
 .post .pjax article .img_alt {
   text-align: center;
@@ -1487,6 +1497,17 @@ div.ac > ul > li:before,
 }
 .post .pjax article p {
   margin: 0 0 16px;
+}
+.post .pjax article .inner-toc {
+  border: #e2dede solid 1px;
+  border-radius: 10px;
+}
+.post .pjax article .inner-toc h2 {
+  border-bottom: none;
+  margin: 10px 20px;
+}
+.post .pjax article .inner-toc ol {
+  list-style: none;
 }
 .post .pjax article ol>li {
   margin-bottom: 10px;
@@ -1909,8 +1930,12 @@ img.pswp__img {
     color: #fff;
     display: block;
     z-index: 100;
-    bottom: 5px;
-    right: 30px;
+    bottom: 32px;
+    right: 0;
+    border: solid 1px;
+    border-right: none;
+    border-radius: 10px 0 0 10px;
+    line-height: 20px;
   }
   .nav-left .left-bottom {
     top: 108px;
@@ -1923,6 +1948,10 @@ img.pswp__img {
     border-top: none;
     border-right: none !important;
     display: inline;
+    margin-right: 126px;
+  }
+  .nav-left .left-bottom a.about.hasFriend {
+    margin-right: 0;
   }
   .nav-left .left-bottom a.about:after {
     content: '·';
@@ -1970,7 +1999,10 @@ img.pswp__img {
   .nav-right .title-list nav a .post-title {
     width: calc(100vw - 32px);
   }
-  .nav-right .friends-content ul {
+  .nav-right .friends-area .friends-content {
+    height: calc(100vh - 232px);
+  }
+  .nav-right .friends-area .friends-content ul {
     margin-left: 30px;
   }
   .nav-right nav a .post-title {
