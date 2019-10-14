@@ -1,7 +1,7 @@
-version: 1.0
+version: 1.0.1
 # 你的头像url
-avatar: /img/1.jpeg
-favicon: /img/1.jpeg
+avatar: /img/avatar.jpg
+favicon: /img/avatar.jpg
 
 #如果博客放置位置不是根目录，则可以通过配置此路径解决静态文件路径错误问题
 # 比如访问地址为 yelog.org/blog 那就需要配置为 blog_path: /blog 才能正常访问
@@ -12,8 +12,22 @@ link:
   theme: color # 链接样式，color: 彩色图标  white: 黑白图标
   items:
     rss: /atom.xml
-    github: https://github.com/jxhsjxhs
-    qq: 360792760
+    github: https://github.com/yelog
+    facebook: https://www.facebook.com/faker.tops
+    twitter:
+    linkedin:
+    instagram: https://www.facebook.com/faker.tops
+    reddit: https://www.reddit.com/user/yelog/
+    weibo: http://weibo.com/u/2307534817
+    jianshu: https://www.jianshu.com/u/ff56736de7cf
+    zhihu: https://www.zhihu.com/people/jaytp/activities
+    csdn:
+    oschina: https://my.oschina.net/yelog
+    juejin:
+    email: jaytp@qq.com
+    qq: 872336115
+    kugou: https://www.kugou.com/
+    neteasemusic: https://music.163.com/#/user/home?id=88151013
 
 ##########多作者模式############
 author:
@@ -27,6 +41,10 @@ author:
 category:
   num: true # 分类显示文章数
   sub: true # 开启多级分类
+  width:
+    lg: 120 # 1468px<屏幕宽度 左侧分类宽度
+    md: 100 # 1024px<屏幕宽度<=1468px 左侧分类宽度
+    sm: 100 # 426px<屏幕宽度<=1024px 左侧分类宽度（ipad）
 # 多级分类说明：
 # 比如在文章中设置多个菜单，则默认为多级菜单，即：工具>hexo
 # categories:
@@ -48,18 +66,17 @@ menu:
       type: 1  # 跳转类型 1：站内异步跳转
     叶落阁:
       on: false
-      url: http://www.jxhs.me/
+      url: http://yelog.org/
       type: 2  # 跳转类型 2：当前页面跳转
     github:
       on: false
-      url: https://github.com/jxhsjxhs
+      url: https://github.com/yelog
       type: 3  # 跳转类型 3：打开新的tab页
 
 # 文末声明
-article_txt: 
-#转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com
+article_txt: 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com
 
-bottom_text: ©2016-2019 jame_xhs
+bottom_text: ©2016-2019 Yelog
 # 自定义页面最下方的站点版权信息
 # 如果不填，则自定义为 ©2017 author (这个author为hexo根目录_config.yml中配置的)
 
@@ -98,10 +115,18 @@ toc:
 
 #文章列表 鼠标移上去的样式, 为空时使用默认效果
 article_list:
+  title: '#383636' # 文章列表标题颜色
+  datetime: '#5e5e5f' # 文章发布日期颜色
   hover:
     background: '#e2e0e0'  # 背景色:提供几种：'#c1bfc1'  '#fbf4a8'
     color:     # 文字颜色 提供几种：'#ffffff'
 # 注意：由于颜色如果包含#，使用单引号 ' 引起来
+
+# 文章列表背景图
+article_bg_img:
+  on: true # 是否开启
+  src: https://i.loli.net/2019/07/22/5d3521411f3f169375.png
+  opacity: 0.3 # 背景图透明度，范围 0 ～ 1
 
 # 列表样式
 list: thread
@@ -109,7 +134,7 @@ list: thread
 # thread : 列表外圈有一个线框
 
 # 引用块样式
-blockquote: bracket
+blockquote: github
 # github : 类似于github的引用快
 # bracket : 类似于左右两个大括号的样式
 
@@ -118,11 +143,6 @@ table: green_title
 # 为空时类似github的table样式
 # green 绿色样式
 # green_title 头部为青色的table样式
-
-# 文章列表背景图
-article_bg_img:
-  on: true
-  src: http://img.xiangzhangshugongyi.com/FlSExUGfRSaqxkK5v42CpuI-tXAL.jpg
 
 # 首页背景图
 index_bg_img:
@@ -145,7 +165,7 @@ code:
 highlight:
   on: true # true开启代码高亮
   lineNum: true # true显示行号
-  theme: school-book
+  theme: atom-light
 # 代码高亮主题,效果可以查看 https://highlightjs.org/static/demo/
 # 支持主题：
 # sublime : 参考sublime的高亮主题
@@ -174,7 +194,7 @@ mathjax:
 
 # 友情链接
 friends:
-耗子: https//:blog.k-8s.com
+  叶落阁: http://yelog.org/
 
 ##########评论设置#############
 comment:
@@ -198,11 +218,11 @@ gentie:
   # 网易云跟帖暂时不支持查询评论数，所以启用时，把评论数关掉，上方comment_count: false。
 
 gitalk:
-  githubID: jxhsjxhs
-  repo: jxhsjxhs.github.io
+  githubID: yelog
+  repo: yelog.github.io
   ClientID:
   ClientSecret:
-  adminUser: jxhsjxhs
+  adminUser: yelog
   distractionFreeMode: true
   language: zh-CN
   perPage: 10
@@ -219,8 +239,8 @@ gitalk:
 
 
 gitment:
-  owner: jxhsjxhs
-  repo: jxhsjxhs.github.io
+  owner: yelog
+  repo: yelog.github.io
   client_id:
   client_secret:
   # gitment : 通过github issue实现的评论系统
