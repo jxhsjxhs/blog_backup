@@ -227,7 +227,7 @@
     
         
             
-            <li><div data-rel="容器">容器<small>(4)</small></div>
+            <li><div data-rel="编程">编程<small>(3)</small></div>
                 
             </li>
             
@@ -235,7 +235,7 @@
     
         
             
-            <li><div data-rel="编程">编程<small>(3)</small></div>
+            <li><div data-rel="容器">容器<small>(4)</small></div>
                 
             </li>
             
@@ -342,11 +342,11 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color2">docker</a>
+        <a href="javascript:" class="color2">golang</a>
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color2">golang</a>
+        <a href="javascript:" class="color2">docker</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -419,14 +419,6 @@
             <span class="post-date" title="2019-08-11 12:53:11">2019/08/11</span>
         </a>
         
-        <a  class="容器 "
-           href="/2019/07/28/docker运行容器后agetty进程cpu占用率100/"
-           data-tag="docker"
-           data-author="" >
-            <span class="post-title" title="docker运行容器后agetty进程cpu占用率100%">docker运行容器后agetty进程cpu占用率100%</span>
-            <span class="post-date" title="2019-07-28 14:23:32">2019/07/28</span>
-        </a>
-        
         <a  class="编程 "
            href="/2019/07/19/golang/"
            data-tag="golang"
@@ -435,20 +427,20 @@
             <span class="post-date" title="2019-07-19 16:23:32">2019/07/19</span>
         </a>
         
+        <a  class="容器 "
+           href="/2019/07/28/docker运行容器后agetty进程cpu占用率100/"
+           data-tag="docker"
+           data-author="" >
+            <span class="post-title" title="docker运行容器后agetty进程cpu占用率100%">docker运行容器后agetty进程cpu占用率100%</span>
+            <span class="post-date" title="2019-07-28 14:23:32">2019/07/28</span>
+        </a>
+        
         <a  class="虚拟化 "
            href="/2019/07/31/kvm-虚拟机修改ip地址/"
            data-tag="kvm"
            data-author="" >
             <span class="post-title" title="kvm 虚拟机修改ip地址">kvm 虚拟机修改ip地址</span>
             <span class="post-date" title="2019-07-31 23:20:18">2019/07/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/07/30/netfilter-和-iptables/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="netfilter 和 iptables">netfilter 和 iptables</span>
-            <span class="post-date" title="2019-07-30 23:03:01">2019/07/30</span>
         </a>
         
         <a  class="nginx "
@@ -539,6 +531,14 @@
             <span class="post-date" title="2019-07-22 22:18:27">2019/07/22</span>
         </a>
         
+        <a  class="系统 "
+           href="/2019/07/19/网络/"
+           data-tag="网络"
+           data-author="" >
+            <span class="post-title" title="网络">网络</span>
+            <span class="post-date" title="2019-07-19 16:06:52">2019/07/19</span>
+        </a>
+        
         <a  class="编程 "
            href="/2019/07/20/编程/"
            data-tag=""
@@ -547,12 +547,12 @@
             <span class="post-date" title="2019-07-20 19:31:09">2019/07/20</span>
         </a>
         
-        <a  class="系统 "
-           href="/2019/07/19/网络/"
-           data-tag="网络"
+        <a  class=""
+           href="/2019/07/30/netfilter-和-iptables/"
+           data-tag=""
            data-author="" >
-            <span class="post-title" title="网络">网络</span>
-            <span class="post-date" title="2019-07-19 16:06:52">2019/07/19</span>
+            <span class="post-title" title="netfilter 和 iptables">netfilter 和 iptables</span>
+            <span class="post-date" title="2019-07-30 23:03:01">2019/07/30</span>
         </a>
         
         <a  class=""
@@ -563,20 +563,20 @@
             <span class="post-date" title="2019-08-30 11:07:54">2019/08/30</span>
         </a>
         
-        <a  class="容器 "
-           href="/2019/07/29/kubernetes-ingress之nginx-ingress/"
-           data-tag="k8s"
-           data-author="" >
-            <span class="post-title" title="kubernetes ingress之nginx-ingress">kubernetes ingress之nginx-ingress</span>
-            <span class="post-date" title="2019-07-29 15:56:12">2019/07/29</span>
-        </a>
-        
         <a  class=""
            href="/2019/07/30/5-分钟带你搞定-Redis-复制/"
            data-tag=""
            data-author="" >
             <span class="post-title" title="5 分钟带你搞定 Redis 复制">5 分钟带你搞定 Redis 复制</span>
             <span class="post-date" title="2019-07-30 11:41:18">2019/07/30</span>
+        </a>
+        
+        <a  class="容器 "
+           href="/2019/07/29/kubernetes-ingress之nginx-ingress/"
+           data-tag="k8s"
+           data-author="" >
+            <span class="post-title" title="kubernetes ingress之nginx-ingress">kubernetes ingress之nginx-ingress</span>
+            <span class="post-date" title="2019-07-29 15:56:12">2019/07/29</span>
         </a>
         
         <a  class="面试题专栏 "
@@ -719,7 +719,7 @@
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#mac','#ubuntu优化','#docker','#golang','#kvm','#nginx','#python','#ubuntu','#系统','#负载','#网络','#k8s',],
+            'data': ['#mac','#ubuntu优化','#golang','#docker','#kvm','#nginx','#python','#ubuntu','#系统','#负载','#网络','#k8s',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');
