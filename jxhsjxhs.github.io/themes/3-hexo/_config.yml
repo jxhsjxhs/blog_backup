@@ -111,7 +111,7 @@ article_list:
 # 文章列表背景图
 article_bg_img:
   on: true # 是否开启
-  src: https://i.loli.net/2019/10/16/x5cMgyhm1UAYbnV.jpg
+  src: https://i.loli.net/2019/10/16/udUMl9qyeZH1xGn.png
   opacity: 0.6 # 背景图透明度，范围 0 ～ 1
 
 # 列表样式
