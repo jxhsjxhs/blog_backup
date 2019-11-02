@@ -272,11 +272,11 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color1">nginx</a>
+        <a href="javascript:" class="color2">ubuntu</a>
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color2">ubuntu</a>
+        <a href="javascript:" class="color1">nginx</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -313,20 +313,20 @@
     
     <nav id="title-list-nav">
         
-        <a  class="杂项 "
-           href="/2019/09/12/9月有感/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="9月有感">9月有感</span>
-            <span class="post-date" title="2019-09-12 20:17:53">2019/09/12</span>
-        </a>
-        
         <a  class=""
            href="/2019/07/30/5-分钟带你搞定-Redis-复制/"
            data-tag=""
            data-author="" >
             <span class="post-title" title="5 分钟带你搞定 Redis 复制">5 分钟带你搞定 Redis 复制</span>
             <span class="post-date" title="2019-07-30 11:41:18">2019/07/30</span>
+        </a>
+        
+        <a  class="杂项 "
+           href="/2019/09/12/9月有感/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="9月有感">9月有感</span>
+            <span class="post-date" title="2019-09-12 20:17:53">2019/09/12</span>
         </a>
         
         <a  class="杂项 "
@@ -401,14 +401,6 @@
             <span class="post-date" title="2019-07-31 23:20:18">2019/07/31</span>
         </a>
         
-        <a  class="nginx "
-           href="/2019/08/06/nginx瑞士军刀-lua/"
-           data-tag="nginx"
-           data-author="" >
-            <span class="post-title" title="nginx瑞士军刀-lua">nginx瑞士军刀-lua</span>
-            <span class="post-date" title="2019-08-06 13:27:11">2019/08/06</span>
-        </a>
-        
         <a  class=""
            href="/2019/07/30/netfilter-和-iptables/"
            data-tag=""
@@ -423,6 +415,14 @@
            data-author="" >
             <span class="post-title" title="ubuntu">ubuntu</span>
             <span class="post-date" title="2019-08-11 18:40:39">2019/08/11</span>
+        </a>
+        
+        <a  class="nginx "
+           href="/2019/08/06/nginx瑞士军刀-lua/"
+           data-tag="nginx"
+           data-author="" >
+            <span class="post-title" title="nginx瑞士军刀-lua">nginx瑞士军刀-lua</span>
+            <span class="post-date" title="2019-08-06 13:27:11">2019/08/06</span>
         </a>
         
         <a  class="编程 "
@@ -521,20 +521,20 @@
             <span class="post-date" title="2019-10-22 11:10:52">2019/10/22</span>
         </a>
         
-        <a  class="系统 "
-           href="/2019/07/19/网络/"
-           data-tag="网络"
-           data-author="" >
-            <span class="post-title" title="网络">网络</span>
-            <span class="post-date" title="2019-07-19 16:06:52">2019/07/19</span>
-        </a>
-        
         <a  class=""
            href="/2019/08/30/论营销/"
            data-tag=""
            data-author="" >
             <span class="post-title" title="论营销">论营销</span>
             <span class="post-date" title="2019-08-30 11:07:54">2019/08/30</span>
+        </a>
+        
+        <a  class="系统 "
+           href="/2019/07/19/网络/"
+           data-tag="网络"
+           data-author="" >
+            <span class="post-title" title="网络">网络</span>
+            <span class="post-date" title="2019-07-19 16:06:52">2019/07/19</span>
         </a>
         
         <a  class="杂项 "
@@ -712,7 +712,7 @@ Redis 虽然支持无盘复制，即直接通过网络发送给从节点，但�
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#mac','#docker','#ubuntu优化','#hexo','#k8s','#kvm','#nginx','#ubuntu','#golang','#k8s,nfs','#podman,docker','#系统','#负载','#git','#网络',],
+            'data': ['#mac','#docker','#ubuntu优化','#hexo','#k8s','#kvm','#ubuntu','#nginx','#golang','#k8s,nfs','#podman,docker','#系统','#负载','#git','#网络',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');
