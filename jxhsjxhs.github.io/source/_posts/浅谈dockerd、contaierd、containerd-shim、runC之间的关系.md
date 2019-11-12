@@ -56,12 +56,12 @@ tags: docker
 
 启动一个容器的过程如下：
 
-> 1.用户在命令行执行 `docker run -itd busybox` 由 docker client 通过 grpc 将指令传给 dockerd
-> 2.docker daemon 请检查本机是否存在 docker 镜像文件，如果有继续往下执行
-> 3.dockerd 会向 host os 请求创建容器
-> 4.linux 会创建一个空的容器(cgroup namespace),并启动 containerd-shim 进程。
-> 5.containerd-shim 拿到三个参数(容器 id，boundle 目录，运行时二进制文件 runc )来调用 runC 的 api
-> 6.runC 提取镜像文件，生成容器配置文件，然后启动容器
+> 用户在命令行执行 `docker run -itd busybox` 由 docker client 通过 grpc 将指令传给 dockerd
+> docker daemon 请检查本机是否存在 docker 镜像文件，如果有继续往下执行
+> dockerd 会向 host os 请求创建容器
+> linux 会创建一个空的容器(cgroup namespace),并启动 containerd-shim 进程。
+> containerd-shim 拿到三个参数(容器 id，boundle 目录，运行时二进制文件 runc )来调用 runC 的 api
+> runC 提取镜像文件，生成容器配置文件，然后启动容器
 
 ### 最后插一张 docker 内部通信图
 
