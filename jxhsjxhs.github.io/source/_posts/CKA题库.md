@@ -5,8 +5,6 @@ categories: 容器
 tags: CKA
 ---
 
-[TOC]
-
 # 题库一
 
 24 题，160 分钟。
