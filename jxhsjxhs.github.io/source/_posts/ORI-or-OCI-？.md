@@ -7,8 +7,8 @@ tags: docker
 
 ### 在介绍 ORI 和 OCI 之前先介绍一些专有名词
 
-> Runtime: 负责镜像管理以及 Pod 和容器的真正运行(例如 docker rkt))
-> Node: 每个节点都运行一个容器运行时，该运行时负责下载映像并运行容器。
+- Runtime: 负责镜像管理以及 Pod 和容器的真正运行(例如 docker rkt))
+- Node: 每个节点都运行一个容器运行时，该运行时负责下载映像并运行容器。
 
 ### 当 Kubelet 想要创建一个容器的步骤
 
@@ -73,3 +73,4 @@ tags: docker
 > ![containerd 1.1](https://tva1.sinaimg.cn/large/006y8mN6gy1g86snalj4jj30u008dmxl.jpg) <br/>
 > 但在 containerd 做这些事情之情, 社区就已经有了一个更为专注的 cri-runtime: CRI-O, 它非常纯粹, 就是兼容 CRI 和 OCI, 做一个 k8s 专用的运行时:
 > ![cri-runtime: CRI-O](https://tva1.sinaimg.cn/large/006y8mN6gy1g86snysq8uj30u008daag.jpg) `注 : podman 就是基于 OCI-O 开发`
+
