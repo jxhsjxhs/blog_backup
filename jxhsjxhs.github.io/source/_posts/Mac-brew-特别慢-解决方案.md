@@ -9,7 +9,9 @@ tags: mac
 
 接下来解决特别慢的问题。
 1.按照常规安装安装好brew
-`/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+```
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
 2.替换brew.git:
 ```
 cd "$(brew --repo)"
@@ -20,4 +22,25 @@ git remote set-url origin https://mirrors.ustc.edu.cn/brew.git
 cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
 git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git 
 ```
-4.愉快的玩耍。
+4.什么?你连安装第一步都卡?请关闭该网页！
+5.开个玩笑,第一步执行卡可以换源下载brew
+- 获取 install 文件
+```
+curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install >> brew_install
+```
+- 更改脚本中的资源链接
+换成清华大学的镜像，修改如下两句.
+```
+BREW_REPO = “https://github.com/Homebrew/brew“.freeze 
+CORE_TAP_REPO = “https://github.com/Homebrew/homebrew-core“.freeze 
+```
+更改为这两句(或者你找的其他家的)
+```
+BREW_REPO = "https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git".freeze 
+CORE_TAP_REPO = "https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git".freeze
+```
+- 运行脚本
+```
+/usr/bin/ruby brew_install
+```
+- 可以愉快玩耍了

@@ -73,9 +73,9 @@ Mount Path: /data/redis
 ```
 apiVersion: v1
 kind: Pod
-nameSpace: staging
 metadata:
   name: non-persistent-redis
+  namespace: staging
 spec:
   containers:
   - name: non-persistent-redis
@@ -154,7 +154,7 @@ Replicas: 3
 
 ```
 kubectl run nginx-app --image=nginx:1.10.2-alpine
-kubectl set image deployment nginx-app --image=nginx:1.11.13-alpine --record
+kubectl set image deployment nginx-app nginx-app=nginx:1.11.13-alpine --record
 # 直接回滚到上一个版本
 kubectl rollout undo deployment nginx-app
 kubectl rollout status -w deployment nginx-app
