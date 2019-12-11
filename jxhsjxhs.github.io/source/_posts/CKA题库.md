@@ -466,6 +466,10 @@ systemctl start kube-manager-controller.service
 ```
 情况二
 kubectl get node显示connection refuse，估计是apiserver的故障。
+具体配置文件参考 static pod 那一题,主要解题思路如下:
+1.为什么api-server没启动 (跟其他题的集群对比发现api-server配置文件相同。但是不生效)
+2.为什么kubelet没有拉起来api-server  (跟其他题的集群对比 比如static pod 那一题，可以发现kubelet没有指定静态pod目录)
+3.kubelet配置文件中加入 (--pod-manifest-path=xxxxxxx)，重启kubelet systelctl  restart  kubelet
 ```
 
 参考：[Troubleshoot Clusters](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-cluster/)
@@ -574,7 +578,7 @@ CA 证书：/opt/dir/ca.crt
 ```
 export ETCDCTL_API=3
 etcdctl help  再etcdctl snapshot save --help
-etcdctl --endpoints=127.0.0.1:2379 --cacert=/etc/ssl/etcd/ssl/ca.pem --cert=/etc/ssl/etcd/ssl/node-node1.pem --key=/etc/ssl/etcd/ssl/node-node1-key.pem snapshot save /data/backup/etcd-snapshot.db
+etcdctl --endpoints=127.0.0.1:2379 --cacert=/opt/dir/ca.crt --cert=//opt/dir/etcd-client.crt --key=/opt/dir/etcd-client.key snapshot save /data/backup/etcd-snapshot.db
 ```
 
 参考：[backing up an etcd cluster](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#backing-up-an-etcd-cluster)
