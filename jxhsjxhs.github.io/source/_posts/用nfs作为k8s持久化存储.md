@@ -15,6 +15,16 @@ tags: k8s,nfs
 > 通过创建PVC动态地创建对应PV，无需手动创建PV。
 > 这条博客是写的静态创建方法
 > ```
+可以发现k8s中的Volume（无论何种类型）和使用它的Pod都是一种静态绑定关系，在Pod定义文件中，同时定义了它使用的Volume。在这种情况下，Volume是Pod的附属品，我们无法像创建其他资源（例如Pod，Node，Deployment等等）一样创建一个Volume。
+
+因此Kubernetes提出了PersistentVolume（PV）的概念。PersistentVolume和Volume一样，代表了集群中的一块存储区域，然而Kubernetes将PersistentVolume抽象成了一种集群资源，类似于集群中的Node对象，这意味着我们可以使用Kubernetes API来创建PersistentVolume对象。PV与Volume最大的不同是PV拥有着独立于Pod的生命周期。
+
+而PersistentVolumeClaim（PVC）代表了用户对PV资源的请求。用户需要使用PV资源时，只需要创建一个PVC对象（包括指定使用何种存储资源，使用多少GB，以何种模式使用PV等信息），Kubernetes会自动为我们分配我们所需的PV。如果把PersistentVolume类比成集群中的Node，那么PersistentVolumeClaim就相当于集群中的Pod，Kubernetes为Pod分配可用的Node，为PersistentVolumeClaim分配可用的PersistentVolume。
+
+作者：伊凡的一天
+链接：https://www.jianshu.com/p/99e610067bc8
+来源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
 ### 搭建nfs服务器
 这里作为测试，临时在master节点上部署NFS服务器。
