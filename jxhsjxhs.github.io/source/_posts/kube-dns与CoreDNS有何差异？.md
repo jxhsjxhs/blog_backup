@@ -83,6 +83,8 @@ headless.default.svc.cluster.local has SRV record 0 25 443 172-17-0-9.headless.d
 
 对于某些应用程序，需要为此设置pod名称，而不是pod IP地址（例如，请参阅kubernetes＃47992和coredns＃1190）。要在CoreDNS中启用此功能，请在Corefile中指定“endpoint_pod_names”选项，结果如下：
 
+```
+
 dnstools# host -t srv headless
 
 headless.default.svc.cluster.local has SRV record 0 25 443 headless-65bb4c479f-qv84p.headless.default.svc.cluster.local.
@@ -93,6 +95,7 @@ headless.default.svc.cluster.local has SRV record 0 25 443 headless-65bb4c479f-q
 
 headless.default.svc.cluster.local has SRV record 0 25 443 headless-65bb4c479f-566rt.headless.default.svc.cluster.local.
 
+```
 ### Autopath
 
 CoreDNS还具有一项特殊功能，可以改善外部名称DNS请求的延迟。 在Kubernetes中，pod的DNS搜索路径指定了一长串后缀。这样可以在请求集群中的服务时使用短名称，例如上面的“headless”，而不是“headless.default.svc.cluster.local”。 但是，当请求外部名称（例如“infoblox.com”时 ），客户端进行了好几次无效的DNS查询，每次都需要从客户端到kube-dns的往返：

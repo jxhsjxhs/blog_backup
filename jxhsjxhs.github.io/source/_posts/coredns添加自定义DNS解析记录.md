@@ -113,4 +113,5 @@ deployment.extensions/coredns scaled
 ~ » kubectl scale deployment coredns -n kube-system --replicas=2                                                     yjzeng@yjzeng-ubuntu
 deployment.extensions/coredns scaled
 ```
-测试，进入任意一个具有ping命令的pod中，ping自己插入的域名，能通就说明已经生效了。
+
+### 测试，进入任意一个具有ping命令的pod中，ping自己插入的域名，能通就说明已经生效了。
