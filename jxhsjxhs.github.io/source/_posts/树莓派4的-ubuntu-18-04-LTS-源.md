@@ -27,5 +27,4 @@ deb-src https://mirrors.ustc.edu.cn/ubuntu-ports/ bionic-backports main restrict
 deb https://mirrors.ustc.edu.cn/ubuntu-ports/ bionic-security main restricted universe multiverse
 deb-src https://mirrors.ustc.edu.cn/ubuntu-ports/ bionic-security main restricted universe multiverse
 deb https://mirrors.ustc.edu.cn/ubuntu-ports/ bionic-proposed main restricted universe multiverse
-deb [arch=amd64] https://mirrors.aliyun.com/docker-ce/linux/ubuntu eoan stable
 deb-src https://mirrors.ustc.edu.cn/ubuntu-ports/ bionic-proposed main restricted universe multiverse
