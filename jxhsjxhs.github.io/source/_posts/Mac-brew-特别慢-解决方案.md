@@ -28,6 +28,8 @@ git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
 ```
 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install >> brew_install
 ```
+如果这个你访问不了,连手机热点 然后加hosts。稳稳的
+
 - 更改脚本中的资源链接
 换成清华大学的镜像，修改如下两句.
 ```
