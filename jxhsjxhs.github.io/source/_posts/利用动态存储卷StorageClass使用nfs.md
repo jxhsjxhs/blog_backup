@@ -72,6 +72,9 @@ metadata:
   name: nfs-client-provisioner
   namespace: kube-system
 spec:
+  selector:
+    matchLabels:
+      app: nfs-client-provisioner
   replicas: 1
   strategy:
     type: Recreate
