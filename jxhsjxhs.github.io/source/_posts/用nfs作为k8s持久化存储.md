@@ -21,10 +21,6 @@ tags: k8s,nfs
 
 而PersistentVolumeClaim（PVC）代表了用户对PV资源的请求。用户需要使用PV资源时，只需要创建一个PVC对象（包括指定使用何种存储资源，使用多少GB，以何种模式使用PV等信息），Kubernetes会自动为我们分配我们所需的PV。如果把PersistentVolume类比成集群中的Node，那么PersistentVolumeClaim就相当于集群中的Pod，Kubernetes为Pod分配可用的Node，为PersistentVolumeClaim分配可用的PersistentVolume。
 
-作者：伊凡的一天
-链接：https://www.jianshu.com/p/99e610067bc8
-来源：简书
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
 ### 搭建nfs服务器
 这里作为测试，临时在master节点上部署NFS服务器。
