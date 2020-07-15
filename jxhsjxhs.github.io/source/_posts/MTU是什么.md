@@ -57,7 +57,7 @@ Pod1 访问 Pod2 流程如下：
 
 5、然后根据路由规则，将数据包转发给cali设备，从而到达 Pod2。
 
-经过排障发现,当时主机的MTU为1454
+经过排障发现,当时主机的MTU为1454,而docker的MTU为1500.
 ![DeepinScreenshot_select-area_20200524123542.png](https://i.loli.net/2020/05/24/PIbBLknaqUKYrJM.png)
 
 找到问题以后处理就很简单了。要么改主机的MTU要么改calico的。由于这里是云主机 改主机MTU可能会引发其他问题。所以我改了calico的MTU。问题修复
