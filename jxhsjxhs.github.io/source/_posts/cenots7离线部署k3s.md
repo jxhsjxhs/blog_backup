@@ -52,7 +52,7 @@ systemctl status k3s    //服务运行状态
 journalctl -u k3s -f     //根据日志可以看到服务启动不起来,要去国外拉images，你懂得，heihei
 
 ### 修正k3s服务改用docker
-vi /etc/systemd/system/k3s.service
+vim /etc/systemd/system/k3s.service
 ExecStart=/usr/bin/k3s \
 server --docker\              //注意 两个杠，容器选择docker，替换默认的containerd
 
