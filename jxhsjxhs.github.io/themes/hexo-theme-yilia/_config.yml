@@ -2,8 +2,9 @@
 
 menu:
   主页: /
-  随笔: /tags/随笔/
-  个人简历:  /resume
+  随笔: /essays
+  个人简历:  /jxhsjxhs
+  每日一题:  /leetcode
 
 # SubNav
 subnav:
