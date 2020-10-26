@@ -64,6 +64,15 @@ sudo dhclient wlan0
 sudo wpa_supplicant -i wlan0  -c /etc/wpa_supplicant/wpa_supplicant.conf -B
 sudo dhclient  wlan0
 ```
+在/etc/rc.local中写入以下
+
+➜  ~ cat /etc/rc.local
+#!/bin/bash
+sh  /etc/init.d/wifi.sh
+exit 0
+➜  ~ chomd +x /etc/rc.local
+```
+
 然后在 /etc/systemd/system 目录中写上开机启动的systemd文件。
 ```
 ➜  system cat rc-local.service
