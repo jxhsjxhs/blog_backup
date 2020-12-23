@@ -133,10 +133,10 @@ func main() {
 func SetupRouter() *gin.Engine {
 	r := gin.Default()
 	r.GET("/hello", helloHandler)
-  r.GET("/xx1", xxHandler1)
-  ...
-  r.GET("/xx30", xxHandler30)
-	return r
+  	r.GET("/xx1", xxHandler1)
+  	...
+  	r.GET("/xx30", xxHandler30)
+		return r
 }
 ```
 因为我们把所有的路由注册都写在一个`SetupRouter`函数中的话就会太复杂了。
@@ -155,17 +155,17 @@ gin_demo
 ```
 func LoadShop(e *gin.Engine)  {
 	e.GET("/hello", helloHandler)
-  e.GET("/goods", goodsHandler)
-  e.GET("/checkout", checkoutHandler)
-  ...
+  	e.GET("/goods", goodsHandler)
+  	e.GET("/checkout", checkoutHandler)
+  	...
 }
 ```
 `routers/blog.go`中添加一个`LoadBlog`的函数，将blog相关的路由注册到指定的路由器：
 ```
 func LoadBlog(e *gin.Engine) {
 	e.GET("/post", postHandler)
-  e.GET("/comment", commentHandler)
-  ...
+  	e.GET("/comment", commentHandler)
+  	...
 }
 ```
 在main函数中实现最终的注册逻辑如下：

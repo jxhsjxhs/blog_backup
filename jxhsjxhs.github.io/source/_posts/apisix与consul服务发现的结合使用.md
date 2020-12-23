@@ -77,6 +77,7 @@ sudo systemctl start consul
 ```
 
 ## start service - golang version
+![](https://tva1.sinaimg.cn/large/0081Kckwgy1glwqp0m8muj30qj0qbjvm.jpg)
 
 ```
 git clone https://github.com/api7/consul-test-golang.git
@@ -158,14 +159,15 @@ curl http://127.0.0.1:9080/apisix/admin/routes/1 -H 'X-API-KEY: edd1c9f034335f13
 
 
 2. test：
-```
-curl http://127.0.0.1:9080/healthz
+![](https://tva1.sinaimg.cn/large/0081Kckwgy1glwqqxoe77j313y086q47.jpg)
 
 ```
-
-will return:
-```
-{"message":"consul test healthz"}
+curl http://127.0.0.1:8080/healthz | jq
 ```
 
-Cool, it works!
+![](https://tva1.sinaimg.cn/large/0081Kckwgy1glwqsd3qemj314g07u75i.jpg)
+```
+curl http://127.0.0.1:9080/healthz | jq 
+
+```
+能看该运行的demo已经被apisix给封装起来了。
