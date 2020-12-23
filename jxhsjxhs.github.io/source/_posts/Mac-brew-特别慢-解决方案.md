@@ -4,6 +4,19 @@ date: 2019-08-09 14:09:35
 categories: 杂项 
 tags: mac
 ---
+更新一下,下面的方法都过时了。
+
+直接一条命令耍完整个安装加换源。
+1. 执行命令：
+
+/bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"
+
+2. 输入编号选择下载源
+
+![](https://tva1.sinaimg.cn/large/0081Kckwgy1glxqervyuxj30xx0e5gvz.jpg)
+
+
+
 
 众所周知，brew是mac下最好的下载软件工具，类似与yum、apt有过之而不及。(如果没听过，请关闭该网页)
 

@@ -3,11 +3,12 @@ title: 理解OAuth 2.0
 date: 2020-12-21 15:41:15
 tags: OAuth 2.0
 ---
-(OAuth)[https://en.wikipedia.org/wiki/OAuth]是一个关于授权（authorization）的开放网络标准，在全世界得到广泛应用，目前的版本是2.0版。
+[OAuth](https://en.wikipedia.org/wiki/OAuth)是一个关于授权（authorization）的开放网络标准，在全世界得到广泛应用，目前的版本是2.0版。
 
-本文对OAuth 2.0的设计思路和运行流程，做一个简明通俗的解释，主要参考材料为(RFC 6749)[http://www.rfcreader.com/#rfc6749]。
+本文对OAuth 2.0的设计思路和运行流程，做一个简明通俗的解释，主要参考材料为[RFC 6749](http://www.rfcreader.com/#rfc6749)。
 
 ### 一、应用场景
+
 为了理解OAuth的适用场合，让我举一个假设的例子。
 
 有一个"云冲印"的网站，可以将用户储存在Google的照片，冲印出来。用户为了使用该服务，必须让"云冲印"读取自己储存在Google上的照片。
@@ -27,8 +28,8 @@ tags: OAuth 2.0
 
 OAuth就是为了解决上面这些问题而诞生的。
 
-
 ### 二、名词定义
+
 在详细讲解OAuth 2.0之前，需要了解几个专用名词。它们对读懂后面的讲解，尤其是几张图，至关重要。
 
 >（1） Third-party application：第三方应用程序，本文中又称"客户端"（client），即上一节例子中的"云冲印"。
@@ -84,6 +85,7 @@ OAuth 2.0的运行流程如下图，摘自RFC 6749。
 授权码模式（authorization code）是功能最完整、流程最严密的授权模式。它的特点就是通过客户端的后台服务器，与"服务提供商"的认证服务器进行互动。
 
 ![](https://tva1.sinaimg.cn/large/0081Kckwgy1glxo1y1y1tj30l80epq2u.jpg)
+
 它的步骤如下：
 
 >（A）用户访问客户端，后者将前者导向认证服务器。
