@@ -4,7 +4,7 @@ menu:
   主页: /
   随笔: /essays
   个人简历:  /jxhsjxhs
-  个人项目:  /leetcode
+  编程记录:  /code
 
 # SubNav
 subnav:
@@ -124,5 +124,6 @@ smart_menu:
 friends:
   铁伟: https://blog.charleslv.me/
   耗子: https://blog.k-8s.com/
+  小桂子: https://blog.csdn.net/cwg_xiaoguizi
 
 aboutme: 运维小白<br><br>开发纯白<br><br>就职小厂<br><br>暂不换坑<br>
