@@ -8,7 +8,7 @@ subtitle: "no BB，show me the code."
 description: ""
 keywords:
 author: jame_xhs
-language: en
+language: zh-CN 
 timezone: ""
 
 deploy:
@@ -95,7 +95,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: hexo-theme-yilia
+theme: fluid
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
