@@ -860,22 +860,22 @@ links:
   # Member item of page
   items:
     - {
-      title: "Fluid Blog",
-      intro: "主题博客",
-      link: "https://hexo.fluid-dev.com/",
-      image: "/img/favicon.png"
+      title: "铁伟 Blog",
+      intro: "铁伟",
+      link: "https://blog.charleslv.me/",
+      image: "/img/blogico/lyw.png"
     }
     - {
-      title: "Fluid Docs",
-      intro: "主题使用指南",
-      link: "https://hexo.fluid-dev.com/docs/",
-      image: "/img/favicon.png"
+      title: "小桂子博客",
+      intro: "小桂子",
+      link: "https://blog.csdn.net/cwg_xiaoguizi",
+      image: "/img/blogico/xiaoguizi.jpg"
     }
     - {
-      title: "Fluid Repo",
-      intro: "主题 GitHub 仓库",
-      link: "https://github.com/fluid-dev/hexo-theme-fluid",
-      image: "/img/favicon.png"
+      title: "耗子 Blog",
+      intro: "耗子",
+      link: "https://blog.k-8s.com/",
+      image: "/img/blogico/haozi.ico"
     }
 
 
