@@ -13,7 +13,7 @@ timezone: ""
 
 deploy:
   type: git
-  repository: https://gitee.com/jame_xhs/jame_xhs.git
+  repository: https://github.com/jxhsjxhs/jxhsjxhs.github.io
   branch: master
 
   # URL
