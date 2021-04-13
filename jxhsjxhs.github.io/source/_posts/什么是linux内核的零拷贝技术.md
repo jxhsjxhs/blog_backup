@@ -3,6 +3,7 @@ title: 什么是linux内核的零拷贝技术
 date: 2021-04-07 15:03:06
 tags:
 index_img: /img/pageimg/zero-copy.jpg
+banner_img: /img/pageimg/zero-copy.jpg
 ---
 
 `零拷贝技术` 是编写高性能服务器的一个关键技术，在介绍 `零拷贝技术` 前先说明一下 `用户空间` 与 `内核空间`。
