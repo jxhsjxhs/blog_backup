@@ -304,8 +304,8 @@ navbar:
       key: '书单',
       icon: 'iconfont icon-books',
       submenu: [
-        { key: '2020', link: '/book-2020/' },
         { key: '2021', link: '/book-2021/' },
+        { key: '2020', link: '/book-2020/' },
       ]
   }
 

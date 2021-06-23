@@ -3,7 +3,14 @@ title: more-order
 date: 2021-02-12 19:48:37
 subtitle: 越阶计划
 tags: more-order
-banner_img: /img/pageimg/zero-copy.jpg
+banner_img: /img/pageimg/yuejie.jpg
 ---
 
+何为越阶计划？
+
+越阶计划是我针对自己的个人情况以及目前状态所制定的一个长期计划，肤浅的目的是为了40岁能达到财务自由的一个自我救赎计划。
+
+此计划分为四个阶段。每个阶段并不是完全严格结束后才开始，但是一定会严格执行下去。
+
+目前正在制定第一个阶段的过程中，未完待续.
 
