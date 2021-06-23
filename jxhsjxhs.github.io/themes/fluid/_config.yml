@@ -301,12 +301,11 @@ navbar:
     - { key: "about", link: "/about/", icon: "iconfont icon-user-fill" }
     - { key: "links", link: "/links/", icon: "iconfont icon-link-fill" }
     - {
-      key: 'code',
+      key: '书单',
       icon: 'iconfont icon-books',
       submenu: [
-        { key: 'openresty', link: '/openresty/' },
-        { key: 'golang', link: '/golang/' },
-        { key: '架构', link: '/arch/' },
+        { key: '2020', link: '/book-2020/' },
+        { key: '2021', link: '/book-2021/' },
       ]
   }
 
