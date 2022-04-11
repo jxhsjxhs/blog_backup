@@ -9,5 +9,12 @@ hin简单
 
 curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
 
-完事。
+配置阿里源镜像
+sudo mkdir -p /etc/docker 
+sudo tee /etc/docker/daemon.json <<-'EOF' 
+{ 
+    "registry-mirrors": ["https://55bqr8pu.mirror.aliyuncs.com"] 
+} 
+EOF sudo systemctl daemon-reload sudo systemctl restart docker
 
+完事。
