@@ -85,4 +85,4 @@ spec:
 ```
 
 ### 从promehtues的监控数据中可查看
-![](https://tva1.sinaimg.cn/large/007S8ZIlgy1gfwxbhgdr3j31ot0u0do8.jpg)
+![](/img/newimg/007S8ZIlgy1gfwxbhgdr3j31ot0u0do8.jpg)

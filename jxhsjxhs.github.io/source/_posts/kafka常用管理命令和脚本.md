@@ -1,8 +1,8 @@
 ---
 title: kafka常用管理命令和脚本
 date: 2022-12-14 11:25:23
-index_img: https://tva1.sinaimg.cn/large/008vxvgGgy1h936eu9i0yj30uo0gyq3r.jpg
-banner_img: https://tva1.sinaimg.cn/large/008vxvgGgy1h936eu9i0yj30uo0gyq3r.jpg
+index_img: /img/newimg/008vxvgGgy1h936eu9i0yj30uo0gyq3r.jpg
+banner_img: /img/newimg/008vxvgGgy1h936eu9i0yj30uo0gyq3r.jpg
 tags:
 ---
 

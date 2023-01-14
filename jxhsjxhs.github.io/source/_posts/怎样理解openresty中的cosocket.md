@@ -16,7 +16,7 @@ cosocket是 OpenResty 中的专有名词，是把协程和网络套接字的英�
 cosocket 不仅需要 Lua 协程特性的支持，也需要 Nginx 中非常重要的事件机制的支持，这两者结合在一 起，最终实现了非阻塞网络 I/O。另外，cosocket 支持 TCP、UDP 和 Unix Domain Socket。
 
 在 OpenResty 中调用一个 cosocket 相关函数，内部实现便是下面这张图的样子：
-![](https://tva1.sinaimg.cn/large/0081Kckwgy1glrwdfkpjvj30ye0fkjuz.jpg)
+![](/img/newimg/0081Kckwgy1glrwdfkpjvj30ye0fkjuz.jpg)
 用户的 Lua 脚本每触发一个网络操作，都会有协程的 yield 以及 resume。
 
 遇到网络 I/O 时，它会交出控制权（yield），把网络事件注册到 Nginx 监听列表中，并把权限交给 Nginx；当有 Nginx 事件达到触发条件时，便唤醒对应的协程继续处理（resume）。

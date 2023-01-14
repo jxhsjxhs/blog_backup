@@ -22,7 +22,7 @@ tags: docker
 > <br/> 5.我们知道创建容器需要做一些设置 namespaces 和 cgroups, 挂载 root filesystem 等等操作, 而这些事该怎么做已经有了公开的规范了, 那就是 OCI(Open Container Initiative, 开放容器标准). 它的一个参考实现叫做 runc. 于是, containerd-shim 在这一步需要调用 runc 这个命令行工具, 来启动容器;
 > <br/>
 > 6.runc 启动完容器后本身会直接退出, containerd-shim 则会成为容器进程的父进程, 负责收集容器进程的状态, 上报给 containerd, 并在容器中 pid 为 1 的进程退出后接管容器中的子进程进行清理, 确保不会出现僵尸进程;
-> ![kubelet执行过程](https://tva1.sinaimg.cn/large/006y8mN6gy1g86s27c1gwj30u007lwex.jpg)
+> ![kubelet执行过程](/img/newimg/006y8mN6gy1g86s27c1gwj30u007lwex.jpg)
 
 > 这个过程乍一看像是在搞我们: Docker Daemon 和 dockershim 看上去就是两个不干活躺在中间划水的啊, Kubelet 为啥不直接调用 containerd 呢?
 
@@ -68,9 +68,9 @@ tags: docker
 ### containerd 中的 ori 以及 oci 的应用
 
 > containerd 1.0 中, 对 CRI 的适配通过一个单独的进程 CRI-containerd 来完成:
-> ![containerd 1.0](https://tva1.sinaimg.cn/large/006y8mN6gy1g86skx5fp0j30u007o0t2.jpg) <br/>
+> ![containerd 1.0](/img/newimg/006y8mN6gy1g86skx5fp0j30u007o0t2.jpg) <br/>
 > containerd 1.1 中做的又更漂亮一点, 砍掉了 CRI-containerd 这个进程, 直接把适配逻辑作为插件放进了 containerd 主进程中:
-> ![containerd 1.1](https://tva1.sinaimg.cn/large/006y8mN6gy1g86snalj4jj30u008dmxl.jpg) <br/>
+> ![containerd 1.1](/img/newimg/006y8mN6gy1g86snalj4jj30u008dmxl.jpg) <br/>
 > 但在 containerd 做这些事情之情, 社区就已经有了一个更为专注的 cri-runtime: CRI-O, 它非常纯粹, 就是兼容 CRI 和 OCI, 做一个 k8s 专用的运行时:
-> ![cri-runtime: CRI-O](https://tva1.sinaimg.cn/large/006y8mN6gy1g86snysq8uj30u008daag.jpg) `注 : podman 就是基于 OCI-O 开发`
+> ![cri-runtime: CRI-O](/img/newimg/006y8mN6gy1g86snysq8uj30u008daag.jpg) `注 : podman 就是基于 OCI-O 开发`
 

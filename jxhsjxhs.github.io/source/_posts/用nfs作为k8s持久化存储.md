@@ -115,7 +115,7 @@ Disk、OpenStack Cinder Volume 等。
 storageClassName 指定 PV 的 class 为 nfs。相当于为 PV 设置了一个分类，PVC 可以指定 class 申请相应 class 的 PV。
 指定 PV 在 NFS 服务器上对应的目录。
 ```
-![create PV](https://tva1.sinaimg.cn/large/006y8mN6gy1g8ctzzzc76j30wm03kaaq.jpg)
+![create PV](/img/newimg/006y8mN6gy1g8ctzzzc76j30wm03kaaq.jpg)
 
 > STATUS 为 Available，表示 pv就绪，可以被 PVC 申请。
 
@@ -139,7 +139,7 @@ spec:
 
 ```
 
-![Bound PVC](https://tva1.sinaimg.cn/large/006y8mN6gy1g8cu33t8lsj30xo06kmyk.jpg)
+![Bound PVC](/img/newimg/006y8mN6gy1g8cu33t8lsj30xo06kmyk.jpg)
 
 > 从 kubectl get pvc 和 kubectl get pv 的输出可以看到pvc绑定成功，注意pvc绑定到对应pv通过labels标签方式实现，也可以不指定，将随机绑定到pv。
 
@@ -165,21 +165,21 @@ spec:
 ```
 > 与使用普通 Volume 的格式类似，在 volumes 中通过 persistentVolumeClaim 指定使用nfs-pvc 申请的 Volume
 
-![create pod](https://tva1.sinaimg.cn/large/006y8mN6gy1g8cu7x6628j30go03tt97.jpg)
+![create pod](/img/newimg/006y8mN6gy1g8cu7x6628j30go03tt97.jpg)
 
 验证PV是否可用
-![file](https://tva1.sinaimg.cn/large/006y8mN6gy1g8cu8qrjnpj30pg02yjrt.jpg)
+![file](/img/newimg/006y8mN6gy1g8cu8qrjnpj30pg02yjrt.jpg)
 进入pod查看情况
-![exec pod](https://tva1.sinaimg.cn/large/006y8mN6gy1g8cu9hb48qj30u0092abz.jpg)
+![exec pod](/img/newimg/006y8mN6gy1g8cu9hb48qj30u0092abz.jpg)
 
 
 #### 删除pv
 删除pod，pv和pvc不会被删除，nfs存储的数据不会被删除。
-![del pod ](https://tva1.sinaimg.cn/large/006y8mN6gy1g8cub06m8qj30hd03iq3d.jpg)
+![del pod ](/img/newimg/006y8mN6gy1g8cub06m8qj30hd03iq3d.jpg)
 继续删除pvc，pv将被释放，处于 Available 可用状态，并且nfs存储中的数据被删除。
-![del pvc ](https://tva1.sinaimg.cn/large/006y8mN6gy1g8cucndzf7j30us05175e.jpg)
+![del pvc ](/img/newimg/006y8mN6gy1g8cucndzf7j30us05175e.jpg)
 继续删除pv
-![del pv](https://tva1.sinaimg.cn/large/006y8mN6gy1g8cud8vkzpj30gf026dg2.jpg)
+![del pv](/img/newimg/006y8mN6gy1g8cud8vkzpj30gf026dg2.jpg)
 
 
 

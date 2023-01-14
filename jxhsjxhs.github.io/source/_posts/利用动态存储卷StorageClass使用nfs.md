@@ -120,7 +120,7 @@ provisioner: fuseim.pri/ifs2
 
 ### 使用
 查看创建好的storageclass
-![storageclass](https://tva1.sinaimg.cn/large/006tNbRwgy1ga9zbr3jiwj30ls050js9.jpg)
+![storageclass](/img/newimg/006tNbRwgy1ga9zbr3jiwj30ls050js9.jpg)
 
 创建pvc,查看是否自动创建相应的pv
 ```
@@ -139,4 +139,4 @@ spec:
 ```
 
 执行可以发现，创建pvc请求以后，pvc已经绑定上自动创建的pv中。
-![bond](https://tva1.sinaimg.cn/large/006tNbRwgy1ga9zf0kl7aj31yw0deqjn.jpg)
+![bond](/img/newimg/006tNbRwgy1ga9zf0kl7aj31yw0deqjn.jpg)

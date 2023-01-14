@@ -431,7 +431,7 @@ $ ssh root@remotesystem 'tcpdump -s0 -c 1000 -nn -w - port 53' | /Applications/W
 
 
 抓取到的数据：
-![](https://tva1.sinaimg.cn/large/0082zybpgy1gbz9bss742j31080s010t.jpg)
+![](/img/newimg/0082zybpgy1gbz9bss742j31080s010t.jpg)
 
 `-c` 选项用来限制抓取数据的大小。如果不限制大小，就只能通过 `ctrl-c` 来停止抓取，这样一来不仅关闭了 tcpdump，也关闭了 wireshark。
 

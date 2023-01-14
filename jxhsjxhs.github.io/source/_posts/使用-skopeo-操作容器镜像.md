@@ -21,7 +21,7 @@ tags:
 > 3.这个工具最好不依赖docker
 
 为啥说最好不依赖docker呢，这里并不是对docker有啥歧视的地方,见下图
-![](https://tva1.sinaimg.cn/large/007S8ZIlgy1ggrlwuw4j9j317g04g0va.jpg)
+![](/img/newimg/007S8ZIlgy1ggrlwuw4j9j317g04g0va.jpg)
 我明明只需要个命令行工具来进行镜像的下载上传，并不需要真正的run起来。但是docker傻乎乎的需要程序进行守护启动才能进行镜像下载  增大维护度
 
 ### skopeo的使用

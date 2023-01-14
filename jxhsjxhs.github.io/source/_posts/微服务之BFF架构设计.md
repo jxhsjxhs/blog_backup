@@ -16,30 +16,30 @@ BFF是（Backends For Frontends）单词的缩写，主要是用于服务前端�
 
 ## 单端调用基础服务
 
-![](https://tva1.sinaimg.cn/large/008eGmZEgy1gpgr5zoorpj30k707x74l.jpg)
+![](/img/newimg/008eGmZEgy1gpgr5zoorpj30k707x74l.jpg)
 
 传统的应用程序内提供的接口是有业务针对性的，这种类型的接口如果独立出来再提供给别的系统再次使用是一件比较麻烦的事情，设计初期的高耦合就决定了这一点。
 
 ## 多端直接调用基础服务
 
-![](https://tva1.sinaimg.cn/large/008eGmZEgy1gpgr6hjfx6j30ko087q3u.jpg)
+![](/img/newimg/008eGmZEgy1gpgr6hjfx6j30ko087q3u.jpg)
 
 如果我们的接口同时提供给web、移动端使用，移动端仅用来采集数据以及数据的展示，而web端大多数场景是用来管理数据，因为不同端点的业务有所不同每一个端的接口复用度不会太高。
 
 ## 多端共用一个BFF
-![](https://tva1.sinaimg.cn/large/008eGmZEgy1gpgr7559nij30m508uq3y.jpg)
+![](/img/newimg/008eGmZEgy1gpgr7559nij30m508uq3y.jpg)
 
 针对多端共用服务接口的场景，我们将基础的数据服务与BFF进行了分离，数据服务仅提供数据的增删改查，并不过多涉及业务的判断处理，所有业务判断处理都交给BFF来把控，遇到的一些业务逻辑异常也同样由BFF格式化处理后展示给访问端点。
 
 这种设计方式同样存在一定的问题，虽然基础服务与BFF进行了分离，我们只需要在BFF层面进行业务判断处理，但是多个端共用一个BFF，也会导致代码编写复杂度增高、代码可阅读性降低、多端业务耦合。
 
 ## 每个端提供一个BFF
-![](https://tva1.sinaimg.cn/large/008eGmZEgy1gpgr97oe0fj30m6095abb.jpg)
+![](/img/newimg/008eGmZEgy1gpgr97oe0fj30m6095abb.jpg)
 如果我们为每一个端点都提供一个BFF，每个端点的BFF处理自身的业务逻辑，需要数据时从基础服务内获取，然后在接口返回之前进行组装数据用于实例化返回对象。
 
 这样基础服务如果有新功能添加，BFF几乎不会受到影响，而我们如果后期把App端点进行拆分成Android、IOS时我们只需要将app-bff进行拆分为android-bff、ios-bff，基础服务同样也不会受到影响
 
-![](https://tva1.sinaimg.cn/large/008eGmZEgy1gpgr9lu1htj30m308jq4u.jpg)
+![](/img/newimg/008eGmZEgy1gpgr9lu1htj30m308jq4u.jpg)
 这样每当新增一个访问端点时，我们需要修改的地方也只有网关的转发以及添加一个BFF即可，基础服务内提供的服务接口我们完全可以复用，因为基础服务提供的接口都是没有业务针对性的！！！
 
 ##  总结

@@ -18,7 +18,7 @@ metallb主要实现了两个功能：地址分配和对外宣告
 > 对外宣告：layer2模式使用arp协议，利用节点的mac额外宣告一个loadbalancer的ip（同mac多ip）；bgp模式下节点利用bgp协议与外部网络设备建立邻居，宣告loadbalancer的地址段给外部网络。
 
 ### 演示环境信息
-![](https://tva1.sinaimg.cn/large/006tNbRwgy1gb4ghrhg6ij31xo068q9o.jpg)
+![](/img/newimg/006tNbRwgy1gb4ghrhg6ij31xo068q9o.jpg)
 
 ### 部署过程
 注: 因bgp模式需要外部路由器的支持，这里主要选用layer2模式（如需选择bgp模式，相应修改roles/cluster-addon/templates/metallb/bgp.yaml.j2）。
@@ -127,6 +127,6 @@ Commercial support is available at
 </html>
 ```
 在集群外部访问
-![](https://tva1.sinaimg.cn/large/006tNbRwgy1gb4goj0mqmj31vs0kgn1k.jpg)
+![](/img/newimg/006tNbRwgy1gb4goj0mqmj31vs0kgn1k.jpg)
 
 

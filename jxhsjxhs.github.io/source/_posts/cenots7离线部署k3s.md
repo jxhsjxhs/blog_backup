@@ -8,7 +8,7 @@ tags:
 > https://k3s.io/
 > https://github.com/rancher/k3s
 > https://github.com/rancher/k3s/releases      //版本及images
-![](https://tva1.sinaimg.cn/large/006tNbRwgy1gb315kdc6qj31ag0heq89.jpg)
+![](/img/newimg/006tNbRwgy1gb315kdc6qj31ag0heq89.jpg)
 
 总的来说就是轻量级k8s,master只要500M内存就能跑,一般场景是边缘计算或者本地测试k8s环境.
 
@@ -59,14 +59,14 @@ server --docker\              //注意 两个杠，容器选择docker，替换�
 systemctl daemon-reload    //刷新服务配置文件，重新定向到target
 systemctl restart k3s
 
-![](https://tva1.sinaimg.cn/large/006tNbRwgy1gb31og03w8j30t70dr0u4.jpg)
+![](/img/newimg/006tNbRwgy1gb31og03w8j30t70dr0u4.jpg)
 k3s的pod运行在docker之中
-![](https://tva1.sinaimg.cn/large/006tNbRwgy1gb31onpelnj312k0faq6h.jpg)
+![](/img/newimg/006tNbRwgy1gb31onpelnj312k0faq6h.jpg)
 
 
 ### 安装错误记录
 在树莓派4装的ubuntu 18.04 LTS 系统中跑k3s发现如下错误
-![](https://tva1.sinaimg.cn/large/007S8ZIlgy1ge3n7e4opzj31fr0u07wi.jpg)
+![](/img/newimg/007S8ZIlgy1ge3n7e4opzj31fr0u07wi.jpg)
 关键报错信息：
 ```
 level=error msg="Failed to find memory cgroup, you may need to add \"cgroup_memory=1 cgroup_enable=memory\" to your linux cmdline (/boot/cmdline.txt on a Raspberry Pi)"

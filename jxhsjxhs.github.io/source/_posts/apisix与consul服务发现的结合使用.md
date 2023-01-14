@@ -77,7 +77,7 @@ sudo systemctl start consul
 ```
 
 ## start service - golang version
-![](https://tva1.sinaimg.cn/large/0081Kckwgy1glwqp0m8muj30qj0qbjvm.jpg)
+![](/img/newimg/0081Kckwgy1glwqp0m8muj30qj0qbjvm.jpg)
 
 ```
 git clone https://github.com/api7/consul-test-golang.git
@@ -159,13 +159,13 @@ curl http://127.0.0.1:9080/apisix/admin/routes/1 -H 'X-API-KEY: edd1c9f034335f13
 
 
 2. test：
-![](https://tva1.sinaimg.cn/large/0081Kckwgy1glwqqxoe77j313y086q47.jpg)
+![](/img/newimg/0081Kckwgy1glwqqxoe77j313y086q47.jpg)
 
 ```
 curl http://127.0.0.1:8080/healthz | jq
 ```
 
-![](https://tva1.sinaimg.cn/large/0081Kckwgy1glwqsd3qemj314g07u75i.jpg)
+![](/img/newimg/0081Kckwgy1glwqsd3qemj314g07u75i.jpg)
 ```
 curl http://127.0.0.1:9080/healthz | jq 
 

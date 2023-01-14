@@ -6,7 +6,7 @@ tags: docker
 ---
 
 > 最近在使用 docker 容器的时候，发现宿主机的 agetty 进程 cpu 占用率达到 100%。
-> ![负载图](https://tva1.sinaimg.cn/large/006y8mN6gy1g864u6hjoxj31k00ikjwt.jpg)
+> ![负载图](/img/newimg/006y8mN6gy1g864u6hjoxj31k00ikjwt.jpg)
 
 在 Google 上搜了下，引起这个问题的原因是在使用"docker run"运行容器时使用了 "/sbin/init"和"--privileged"参数。
 

@@ -23,8 +23,8 @@ win10报错以后可以进入那种引导修复的状态。
 重装完以后 就可以在AHIC模式下启动windows了 我也不晓得为啥 试出来的
 ```
 上双系统的图瞧瞧
-![](https://tva1.sinaimg.cn/large/00831rSTgy1gdb90jbqawj31400u0di5.jpg)
-![](https://tva1.sinaimg.cn/large/00831rSTgy1gdb91goay0j31hb0tz7wi.jpg)
-![](https://tva1.sinaimg.cn/large/00831rSTgy1gdb91q3qc3j31hc0u0hdt.jpg)
+![](/img/newimg/00831rSTgy1gdb90jbqawj31400u0di5.jpg)
+![](/img/newimg/00831rSTgy1gdb91goay0j31hb0tz7wi.jpg)
+![](/img/newimg/00831rSTgy1gdb91q3qc3j31hc0u0hdt.jpg)
 
 > 补充一句,电脑已经卖掉了....只是买来玩玩。倒手转卖赚了500.(我真他娘应该去做销售的.)

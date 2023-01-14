@@ -28,7 +28,7 @@ CoreOS 在 2016 年底提出了 Operator 的概念，官方定义如下：
 Operator 使用自定义资源(CR)管理应用以及其组件的自定义 kubernetes 控制器，自定义资源是 kubernetes 中的 API 扩展，自定义资源配置(CRD)会明确 CR 并列出 Operator 用户可用的所有配置，Operator 监视 CR 类型并且采取特定于应用的操作，确保当前状态与该资源的理想状态相符。
 
 Operator 工作流程：
-![](https://tva1.sinaimg.cn/large/008i3skNly1gvc901ct2lj60u01aswg902.jpg)
+![](/img/newimg/008i3skNly1gvc901ct2lj60u01aswg902.jpg)
 
 一个 Operator 中主要有以下几种对象：
                  
@@ -50,14 +50,14 @@ mkdir rocketmq-operator
 operator-sdk init  --domain daocloud.io
             
 生成以下文件以及目录：
-![](https://tva1.sinaimg.cn/large/008i3skNly1gvc90n9ansj60jg07gdgs02.jpg)
+![](/img/newimg/008i3skNly1gvc90n9ansj60jg07gdgs02.jpg)
 
 
 go.mod：与我们的项目匹配的新 Go 模块，具有基本依赖项。
          
 PROJECT：我们应用的一些元数据元数据
 
-![](https://tva1.sinaimg.cn/large/008i3skNly1gvc90xstguj60n408mjs602.jpg)
+![](/img/newimg/008i3skNly1gvc90xstguj60n408mjs602.jpg)
 
 如上，定义了项目名称，版本以及 repo 等
 
@@ -71,9 +71,9 @@ operator-sdk create api --group rocketmq  --version v1 --kind Broker --resource 
 
 生成文件目录结构如下：
 
-![](https://tva1.sinaimg.cn/large/008i3skNly1gvc91cyt96j60n40a4jt202.jpg)
+![](/img/newimg/008i3skNly1gvc91cyt96j60n40a4jt202.jpg)
 再次查看 PROJECT 文件：
-![](https://tva1.sinaimg.cn/large/008i3skNly1gvc91iiua7j60n40j640302.jpg)
+![](/img/newimg/008i3skNly1gvc91iiua7j60n40j640302.jpg)
 PROJECT 文件中新增了 Resources 字段，描述了我们添加的 Broker CRD 以及它的版本。
             
 Api：自定义类型元数据存放位置，每次创建新类型都会在此处生成新文件。
@@ -85,34 +85,34 @@ Controller：自定义资源的控制器协调循环逻辑
 查看 api/v1/ broker_types.go 文件，我们对 BrokerSpec 以及 BrokerStatus 做一些定义，以使 Kubernetes 通过 Controller 协调 Broker
 
 
-![](https://tva1.sinaimg.cn/large/008i3skNly1gvc91u0kc0j60iy0bowf902.jpg)
+![](/img/newimg/008i3skNly1gvc91u0kc0j60iy0bowf902.jpg)
 
 
 如下所示，我们定义了一系列字段来设置对 Broker 的期望状态，同时也定义了一系列字段来描述 Broker 的当前状态，以供我们很方便的监控 Broker 的生命周期
 
-![](https://tva1.sinaimg.cn/large/008i3skNly1gvc925r7tlj60iy0aat9n02.jpg)
+![](/img/newimg/008i3skNly1gvc925r7tlj60iy0aat9n02.jpg)
 
-![](https://tva1.sinaimg.cn/large/008i3skNly1gvc929vdhij60jc076mxv02.jpg)
+![](/img/newimg/008i3skNly1gvc929vdhij60jc076mxv02.jpg)
 
 由上述介绍我们已经知道控制器主要完成协调循环逻辑， 将自定义资源不断推向期望状态，需要注意的是控制器运行在集群上并对集群资源进行增删改查，所以需要 RBAC 权限。
 
-![](https://tva1.sinaimg.cn/large/008i3skNly1gvc92fv29zj60n40dqmyb02.jpg)
+![](/img/newimg/008i3skNly1gvc92fv29zj60n40dqmyb02.jpg)
 
 控制器会监视资源的增删改事件，并触发 reconcile 函数作为响应，每个控制器都有两个核心组件：Informer 以及 Workqueue，Informer 负责 Watch 指定资源的变化，将增删改时间发送到 Workqueue 中，然后控制器的 Worker 从Workqueue 中取出事件交由控制器程序处理，这些机制 controller-runtime 包已经帮我们实现，当我们需要设置对指定的资源进行 Watch 时，只需更改 broker_controller.go 中 SetupWithManager 方法即可。 
 
-![](https://tva1.sinaimg.cn/large/008i3skNly1gvc92lt4sjj60n405wjrt02.jpg)
+![](/img/newimg/008i3skNly1gvc92lt4sjj60n405wjrt02.jpg)
 
 如上，当前控制器会监听 Broker 资源，如果我们希望它同时监听 Deploymeng/Pod 等资源可以用 For 进一步指定，如果我们希望监听由 Broker 类型创建的 Deploymeng，可以使用 Owns 进行指定，当然这要求 Broker 与由他创建的 Deployment 具有从属关系。
      
 RocketMQ Operator Broker 使用 DLedger 模式部署，实现了按组扩缩容，配置文件热更新，动态获取 Nameserver 地址等功能，简单的协调逻辑如图：
 
-![](https://tva1.sinaimg.cn/large/008i3skNly1gvc92rj1e2j60qa0igjsd02.jpg)
+![](/img/newimg/008i3skNly1gvc92rj1e2j60qa0igjsd02.jpg)
 
 在开始一次协调循环之前，我们先看看 Operator SDK 帮助我们做了什么事：
       
 首先它会将自定义资源的 Group 和 Version 以及 Kind（GVK）注册进 Scheme中，维持 GVK 与我们编写的自定义资源结构体的映射关系.
 
-![](https://tva1.sinaimg.cn/large/008i3skNly1gvc942t620j60u007v3z602.jpg)
+![](/img/newimg/008i3skNly1gvc942t620j60u007v3z602.jpg)
 
 而每一个控制器中都需要 Scheme，以通过 GVK 来找到我们所要 Watch 的 Kind，也就是我们编写的自定义资源 Struct,而实例化以后便是 GVR，因此 GVK 与 GVR 便是 Reconcile 的关键，控制器又通过 Informer Watch 到自定义资源的增删改查事件，来触发 Reconcile，一次协调循环就此开始：
       
@@ -125,23 +125,23 @@ Sync 阶段，根据定义的 CR 编排文件，对实例进行部署以及更�
       
 为了保证应用完整的运维性，监控当然必不可少：
 
-![](https://tva1.sinaimg.cn/large/008i3skNly1gvc94dmhn5j60u00bimy802.jpg)
+![](/img/newimg/008i3skNly1gvc94dmhn5j60u00bimy802.jpg)
 
 如上，通过在控制器中添加 Metrics 地址来暴露出我们的监控指标，使用 RocketMQ Exporter 提供监控指标给 Prometheus 使用
 
-![](https://tva1.sinaimg.cn/large/008i3skNly1gvc94kpjjej60u00gimzg02.jpg)
+![](/img/newimg/008i3skNly1gvc94kpjjej60u00gimzg02.jpg)
 这样，一个具备自动化运维及监控，扩缩容能力的 Operator 就开发完成了，以下是它的一个基本架构：
 
-![](https://tva1.sinaimg.cn/large/008i3skNly1gvc953xyl4j60qg0lr75e02.jpg)
+![](/img/newimg/008i3skNly1gvc953xyl4j60qg0lr75e02.jpg)
 
 ### 5. Operator 社区    
 随着 Operator 的种类的增多和秉持着开源共享的精神，社区也相继推出了开放和共享 Operator 的机制，如 operatorhub.io, artifacthub.io。
 
 
-![](https://tva1.sinaimg.cn/large/008i3skNly1gvc95f4po2j60u00ew40302.jpg)
+![](/img/newimg/008i3skNly1gvc95f4po2j60u00ew40302.jpg)
 
 
-![](https://tva1.sinaimg.cn/large/008i3skNly1gvc95lwlu1j60u00evq4102.jpg)
+![](/img/newimg/008i3skNly1gvc95lwlu1j60u00evq4102.jpg)
 
 
 如果大家对 Operator 实现细节感兴趣，可以参考社区中几个不错的 Operator 实现：

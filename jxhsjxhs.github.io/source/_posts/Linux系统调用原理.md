@@ -68,7 +68,7 @@ long sys_call_table[] = {
 用户调用 系统调用 时，通过向 eax 寄存器写入要调用的 系统调用 编号，这个编号就是 sys_call_table 数组的下标。 system_call 过程获取 eax 寄存器的值，然后通过 eax 寄存器的值找到要调用的 系统调用 入口，并且进行调用。调用完成后，系统调用 会把返回值保存到 eax 寄存器中。
 
 
-![](https://tva1.sinaimg.cn/large/008eGmZEgy1gpb9mdbxdwj30fv0a1glx.jpg)
+![](/img/newimg/008eGmZEgy1gpb9mdbxdwj30fv0a1glx.jpg)
 
 ## 三、系统调用实现
 

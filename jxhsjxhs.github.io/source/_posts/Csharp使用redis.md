@@ -35,7 +35,7 @@ namespace redistest
 ```
 
 ### 推荐一个redis的客户端。贼好用 
-![](https://tva1.sinaimg.cn/large/007S8ZIlgy1gfez9d29hhj30uk0k8ac6.jpg)
+![](/img/newimg/007S8ZIlgy1gfez9d29hhj30uk0k8ac6.jpg)
 [redis工具github项目地址](https://github.com/qishibo/AnotherRedisDesktopManager)
 
 ### StackExchange.Redis具体使用文档

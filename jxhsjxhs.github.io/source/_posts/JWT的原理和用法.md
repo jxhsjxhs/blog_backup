@@ -46,7 +46,7 @@ JWT 的原理是，服务器认证以后，生成一个 JSON 对象，发回给�
 ### JWT 的数据结构
 
 实际的 JWT 大概就像下面这样。
-![](https://tva1.sinaimg.cn/large/007S8ZIlgy1ggrmz6bwctj315e096n7h.jpg)
+![](/img/newimg/007S8ZIlgy1ggrmz6bwctj315e096n7h.jpg)
 
 它是一个很长的字符串，中间用点`（.）`分隔成三个部分。注意，JWT 内部是没有换行的，这里只是为了便于展示，将它写成了几行。
 

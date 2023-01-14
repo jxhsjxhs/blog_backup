@@ -22,13 +22,13 @@ RabbitMQ和邮局的主要区别在于它不处理纸张，而是接受、存储
 RabbitMQ和一般的消息传递都使用一些术语。
 
 > 生产仅意味着发送。发送消息的程序是生产者：
-![](https://tva1.sinaimg.cn/large/008eGmZEgy1gmgnk1d1gnj301z01fdfl.jpg)
+![](/img/newimg/008eGmZEgy1gmgnk1d1gnj301z01fdfl.jpg)
 
 > 队列是位于RabbitMQ内部的邮箱的名称。尽管消息通过RabbitMQ和你的应用程序流动，但它们只能存储在队列中。队列只受主机内存和磁盘限制的限制，实际上它是一个大的消息缓冲区。许多生产者可以向一个队列发送消息，而许多消费者可以尝试从一个队列接收数据。以下是我们表示队列的方式：
 
-![](https://tva1.sinaimg.cn/large/008eGmZEgy1gmgnk9o4loj303m02j0ol.jpg)
+![](/img/newimg/008eGmZEgy1gmgnk9o4loj303m02j0ol.jpg)
 
 > 消费与接收具有相似的含义。消费者是一个主要等待接收消息的程序：
-![](https://tva1.sinaimg.cn/large/008eGmZEgy1gmgnki4ehmj301z01fjr5.jpg)
+![](/img/newimg/008eGmZEgy1gmgnki4ehmj301z01fjr5.jpg)
 请注意，生产者，消费者和代理（broker）不必位于同一主机上。实际上，在大多数应用程序中它们不是。一个应用程序既可以是生产者，也可以是消费者。
 

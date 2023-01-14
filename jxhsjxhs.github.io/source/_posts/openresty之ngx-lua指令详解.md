@@ -2,13 +2,13 @@
 title: openresty之ngx-lua指令详解
 date: 2021-10-29 22:37:11
 tags:
-index_img: https://tva1.sinaimg.cn/large/008i3skNgy1gvwmjwu7ubj325w0u0gn8.jpg
-banner_img: https://tva1.sinaimg.cn/large/008i3skNgy1gvwmjwu7ubj325w0u0gn8.jpg
+index_img: /img/newimg/008i3skNgy1gvwmjwu7ubj325w0u0gn8.jpg
+banner_img: /img/newimg/008i3skNgy1gvwmjwu7ubj325w0u0gn8.jpg
 ---
 最近写openresty 记录一下，经常忘。
 ### 指令顺序
 nginx配置文件中执行lua语句是通过指令来识别的，lua指令执行顺序如下：
-![](https://tva1.sinaimg.cn/large/008i3skNgy1gvwmi5fg8nj30rx0pawfv.jpg)
+![](/img/newimg/008i3skNgy1gvwmi5fg8nj30rx0pawfv.jpg)
 
 ### INIT_BY_LUA代码诠释
 init_by_lua主要用来执行加载比较耗时的操作。这里通过一个例子来说明：我们在ngx中开辟一个全局变量，并在lua中执行自增操作。

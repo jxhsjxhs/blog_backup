@@ -6,7 +6,7 @@ tags: docker
 ---
 
 "少啰嗦，先看东西"
-![docker内部架构图](https://tva1.sinaimg.cn/large/006y8mN6gy1g864obry93j318c0ieaet.jpg)
+![docker内部架构图](/img/newimg/006y8mN6gy1g864obry93j318c0ieaet.jpg)
 
 ## 组件大纲
 
@@ -65,4 +65,4 @@ tags: docker
 
 ### 最后插一张 docker 内部通信图
 
-> ![docker内部通信](https://tva1.sinaimg.cn/large/006y8mN6gy1g864od01lxj31560l2tbe.jpg)
+> ![docker内部通信](/img/newimg/006y8mN6gy1g864od01lxj31560l2tbe.jpg)

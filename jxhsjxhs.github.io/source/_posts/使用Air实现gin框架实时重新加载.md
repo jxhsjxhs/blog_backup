@@ -112,4 +112,4 @@ clean_on_exit = true
 
 ### 效果图
 
-![](https://tva1.sinaimg.cn/large/007S8ZIlgy1ggrnaui0m5g30xc0k042d.gif)
+![](/img/newimg/007S8ZIlgy1ggrnaui0m5g30xc0k042d.gif)

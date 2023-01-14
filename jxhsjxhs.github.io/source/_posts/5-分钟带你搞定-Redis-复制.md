@@ -29,7 +29,7 @@ tags:
 > Step 5：如果主节点设置了权限，那么就需要进行权限验证，如果验证失败，复制终止。
 > Step 6：权限验证通过后，进行数据同步，这是耗时最长的操作，主节点将把所有的数据全部发送给从节点。
 > Step 7：当主节点把当前的数据同步给从节点后，便完成了复制的建立流程。接下来，主节点就会持续的把写命令发送给从节点，保证主从数据一致性。
-> ![复制过程](https://tva1.sinaimg.cn/large/006y8mN6gy1g863xvzz0uj30ti0t0k3c.jpg)
+> ![复制过程](/img/newimg/006y8mN6gy1g863xvzz0uj30ti0t0k3c.jpg)
 
 ### 二、数据间的同步
 
@@ -61,7 +61,7 @@ redis 同步有 2 个命令：sync 和 psync，前者是 redis 2.8 之前的同�
 > runId：从节点所复制主节点的运行 id
 > offset：当前从节点已复制的数据偏移量
 > 7、psync 执行流程
-> ![数据同步](https://tva1.sinaimg.cn/large/006y8mN6gy1g864g77205j30o60gugqa.jpg)
+> ![数据同步](/img/newimg/006y8mN6gy1g864g77205j30o60gugqa.jpg)
 
 ### 流程说明：
 
@@ -74,7 +74,7 @@ redis 同步有 2 个命令：sync 和 psync，前者是 redis 2.8 之前的同�
 ### 三、全量复制
 
 > 全量复制是 Redis 最早支持的复制方式，也是主从第一次建立复制时必须经历的的阶段。触发全量复制的命令是 sync 和 psync。之前说过，这两个命令的分水岭版本是 2.8，redis 2.8 之前使用 sync 只能执行全量不同，2.8 之后同时支持全量同步和部分同步。
-> ![全量复制](https://tva1.sinaimg.cn/large/006y8mN6gy1g864i3kt7pj30tk0zu12k.jpg)
+> ![全量复制](/img/newimg/006y8mN6gy1g864i3kt7pj30tk0zu12k.jpg)
 > 流程如下：
 > Step 1：发送 psync 命令（spync ？-1）
 > Step 2：主节点根据命令返回 FULLRESYNC  
@@ -97,7 +97,7 @@ Redis 虽然支持无盘复制，即直接通过网络发送给从节点，但�
 
 当从节点正在复制主节点时，如果出现网络闪断和其他异常，从节点会让主节点补发丢失的命令数据，主节点只需要将复制缓冲区的数据发送到从节点就能够保证数据的一致性，相比较全量复制，成本小很多。
 
-> ![部分复制](https://tva1.sinaimg.cn/large/006y8mN6gy1g864kqtqm2j30w40m6wmc.jpg)
+> ![部分复制](/img/newimg/006y8mN6gy1g864kqtqm2j30w40m6wmc.jpg)
 > 当从节点出现网络中断，超过了 repl-timeout 时间，主节点就会中断复制连接。
 > 主节点会将请求的数据写入到“复制积压缓冲区”，默认 1MB。
 > 当从节点恢复，重新连接上主节点，从节点会将 offset 和主节点 id 发送到主节点。
@@ -113,7 +113,7 @@ Redis 虽然支持无盘复制，即直接通过网络发送给从节点，但�
 > 主节点默认每隔 10 秒对从节点发送 ping 命令，可修改配置 repl-ping-slave-period 控制发送频率。
 > 从节点在主线程每隔一秒发送 replconf ack{offset} 命令，给主节点上报自身当前的复制偏移量。
 > 主节点收到 replconf 信息后，判断从节点超时时间，如果超过 repl-timeout 60 秒，则判断节点下线。
-> ![心跳](https://tva1.sinaimg.cn/large/006y8mN6gy1g864ik5kdlj30jw0a2wi1.jpg)
+> ![心跳](/img/newimg/006y8mN6gy1g864ik5kdlj30jw0a2wi1.jpg)
 
 注意：
 
@@ -127,7 +127,7 @@ Redis 虽然支持无盘复制，即直接通过网络发送给从节点，但�
 > Step 1：主节点接受处理命令。
 > Step 2：主节点处理完后返回响应结果 。
 > Step 3：对于修改命令，异步发送给从节点，从节点在主线程中执行复制的命令
-> ![异步复制](https://tva1.sinaimg.cn/large/006y8mN6gy1g864l736zwj30so0do77c.jpg)
+> ![异步复制](/img/newimg/006y8mN6gy1g864l736zwj30so0do77c.jpg)
 
 ### 七、总结
 

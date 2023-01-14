@@ -16,18 +16,18 @@ TFO允许在TCP握手期间发送和接收初始SYN分组中的数据。如果�
 
 ### 拓扑图
 普通的TCP连接过程如下图所示 
-![](https://tva1.sinaimg.cn/large/0082zybpgy1gc2s4f800fj30go08zwem.jpg)
+![](/img/newimg/0082zybpgy1gc2s4f800fj30go08zwem.jpg)
 
 
 
 而TFO的连接过程如下 
-![](https://tva1.sinaimg.cn/large/0082zybpgy1gc2s5lu0yij30go099dg0.jpg)
+![](/img/newimg/0082zybpgy1gc2s5lu0yij30go099dg0.jpg)
 当客户端断开一段时间后，再次连接过程如下
-![](https://tva1.sinaimg.cn/large/0082zybpgy1gc2s5whhzuj30go0ac3yr.jpg)
+![](/img/newimg/0082zybpgy1gc2s5whhzuj30go0ac3yr.jpg)
 可以看出使用TFO后，非第一次连接变成了两次握手即可
 
 总揽
-![](https://tva1.sinaimg.cn/large/0082zybpgy1gc2pyjnhaoj30ry0nedis.jpg)
+![](/img/newimg/0082zybpgy1gc2pyjnhaoj30ry0nedis.jpg)
 
 ### TFO的开启
 

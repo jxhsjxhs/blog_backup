@@ -11,12 +11,12 @@ tags: hexo
 ### 首先说说我写博客用的东西：
 > 1. 博客使用hexo，使用3-hexo主题
 > 2. 我把博客代码跟编译出来的静态页面分为两个仓库。写完以后分别提交。
-> ![git仓库](https://tva1.sinaimg.cn/large/006y8mN6gy1g8aut185bdj309d026dft.jpg)
+> ![git仓库](/img/newimg/006y8mN6gy1g8aut185bdj309d026dft.jpg)
 
 ### 正文来了
 > 1. 走了的好多弯路，一开始博客的图片用的都是本地图片，第一是加载慢。并且换电脑以后 用hexo g && hexo s  居然显示不了图片。
 > 2. 然后图片就换了图床---(这里推荐一个mac下的图床工具ipic,免费 好用)利用的是新浪的图床  也不知道能用多久。。打算自己用oss搭建一个图床
-> ![图床软件](https://tva1.sinaimg.cn/large/006y8mN6gy1g8avadnznpj306205z756.jpg)
+> ![图床软件](/img/newimg/006y8mN6gy1g8avadnznpj306205z756.jpg)
 ---
 ### 真的正文
 > 1. 安装必要软件

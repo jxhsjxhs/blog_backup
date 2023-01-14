@@ -42,10 +42,10 @@ struct task_struct {
 }
 ```
 Linux把所有的进程使用双向链表连接起来, 如下图(来源<Linux设计与实现>):
-![](https://tva1.sinaimg.cn/large/008eGmZEgy1gpc4ubn2ttj30co08yq3t.jpg)
+![](/img/newimg/008eGmZEgy1gpc4ubn2ttj30co08yq3t.jpg)
 
 Linux内核为了加快获取当前进程的的task_struct结构, 使用了一个技巧, 就是把task_struct放置在内核栈的栈底, 这样就可以通过 `esp寄存器` 快速获取到当前运行进程的task_struct结构. 如下图:
-![](https://tva1.sinaimg.cn/large/008eGmZEgy1gpc4ugzldpj30hj0b3mx8.jpg)
+![](/img/newimg/008eGmZEgy1gpc4ugzldpj30hj0b3mx8.jpg)
 
 获取当前运行进程的task_struct代码如下:
 ```c
@@ -67,7 +67,7 @@ static inline struct task_struct * get_current(void)
 
 各种状态间的转换如下图:
 
-![](https://tva1.sinaimg.cn/large/008eGmZEgy1gpc4umsilej30i60d3t9s.jpg)
+![](/img/newimg/008eGmZEgy1gpc4umsilej30i60d3t9s.jpg)
 
 ### 进程的创建
 在Linux系统中，进程的创建使用fork()系统调用，fork()调用会创建一个与父进程一样的子进程，唯一不同就是fork()的返回值，父进程返回的是子进程的进程ID，而子进程返回的是0。

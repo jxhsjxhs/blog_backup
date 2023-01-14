@@ -13,7 +13,7 @@ tags: mac
 
 2. 输入编号选择下载源
 
-![](https://tva1.sinaimg.cn/large/0081Kckwgy1glxqervyuxj30xx0e5gvz.jpg)
+![](/img/newimg/0081Kckwgy1glxqervyuxj30xx0e5gvz.jpg)
 
 
 

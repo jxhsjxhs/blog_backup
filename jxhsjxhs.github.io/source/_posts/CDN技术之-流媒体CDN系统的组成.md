@@ -2,8 +2,8 @@
 title: CDN技术之--流媒体CDN系统的组成
 date: 2021-10-29 22:06:56
 tags:
-index_img: https://tva1.sinaimg.cn/large/008i3skNgy1guyn8shm93j617w0tqgq102.jpg 
-banner_img:  https://tva1.sinaimg.cn/large/008i3skNgy1guyn8shm93j617w0tqgq102.jpg 
+index_img: /img/newimg/008i3skNgy1guyn8shm93j617w0tqgq102.jpg 
+banner_img:  /img/newimg/008i3skNgy1guyn8shm93j617w0tqgq102.jpg 
 ---
 ### 流媒体业务
 

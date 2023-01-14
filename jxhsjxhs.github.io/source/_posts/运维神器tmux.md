@@ -24,7 +24,7 @@ tags:
 > ```
 > 类似的终端复用器还有 GNU Screen。Tmux 与它功能相似，但是更易用，也更强大。
 
-![tmux](https://tva1.sinaimg.cn/large/006y8mN6gy1g8ax01tp5ej31zz0u07tv.jpg)
+![tmux](/img/newimg/006y8mN6gy1g8ax01tp5ej31zz0u07tv.jpg)
 
 
 ## 二、基本用法
@@ -47,7 +47,7 @@ $ brew install tmux
 $ tmux
 ```
 上面命令会启动 Tmux 窗口，底部有一个状态栏。状态栏的左侧是窗口信息（编号和名称），右侧是系统信息。
-![tmux run](https://tva1.sinaimg.cn/large/006y8mN6gy1g8axbkbbqgj30ke0dvt94.jpg)
+![tmux run](/img/newimg/006y8mN6gy1g8axbkbbqgj30ke0dvt94.jpg)
 按下`Ctrl+d`或者显式输入`exit`命令，就可以退出 Tmux 窗口。
 
 ### 2.3 前缀键
@@ -162,7 +162,7 @@ $ tmux split-window
 $ tmux split-window -h
 ```
 
-![tmux run1](https://tva1.sinaimg.cn/large/006y8mN6gy1g8axhwysv1j30jc0bzq4q.jpg)
+![tmux run1](/img/newimg/006y8mN6gy1g8axhwysv1j30jc0bzq4q.jpg)
 
 ### 5.2 移动光标
 `tmux select-pane`命令用来移动光标位置。

@@ -12,7 +12,7 @@ tags: OAuth 2.0
 为了理解OAuth的适用场合，让我举一个假设的例子。
 
 有一个"云冲印"的网站，可以将用户储存在Google的照片，冲印出来。用户为了使用该服务，必须让"云冲印"读取自己储存在Google上的照片。
-![](https://tva1.sinaimg.cn/large/0081Kckwgy1glxnw8oyx0j308c08ca9w.jpg)
+![](/img/newimg/0081Kckwgy1glxnw8oyx0j308c08ca9w.jpg)
 问题是只有得到用户的授权，Google才会同意"云冲印"读取这些照片。那么，"云冲印"怎样获得用户的授权呢？
 
 传统方法是，用户将自己的Google用户名和密码，告诉"云冲印"，后者就可以读取用户的照片了。这样的做法有以下几个严重的缺点。
@@ -84,7 +84,7 @@ OAuth 2.0的运行流程如下图，摘自RFC 6749。
 ### 六、授权码模式
 授权码模式（authorization code）是功能最完整、流程最严密的授权模式。它的特点就是通过客户端的后台服务器，与"服务提供商"的认证服务器进行互动。
 
-![](https://tva1.sinaimg.cn/large/0081Kckwgy1glxo1y1y1tj30l80epq2u.jpg)
+![](/img/newimg/0081Kckwgy1glxo1y1y1tj30l80epq2u.jpg)
 
 它的步骤如下：
 
@@ -182,7 +182,7 @@ E步骤中，认证服务器发送的HTTP回复，包含以下参数：
 ### 七、简化模式
 简化模式（implicit grant type）不通过第三方应用程序的服务器，直接在浏览器中向认证服务器申请令牌，跳过了"授权码"这个步骤，因此得名。所有步骤在浏览器中完成，令牌对访问者是可见的，且客户端不需要认证。
 
-![](https://tva1.sinaimg.cn/large/0081Kckwgy1glxo798xs2j30in0fxq30.jpg)
+![](/img/newimg/0081Kckwgy1glxo798xs2j30in0fxq30.jpg)
 它的步骤如下：
 >（A）客户端将用户导向认证服务器。
 >
@@ -243,7 +243,7 @@ C步骤中，认证服务器回应客户端的URI，包含以下参数：
 密码模式（Resource Owner Password Credentials Grant）中，用户向客户端提供自己的用户名和密码。客户端使用这些信息，向"服务商提供商"索要授权。
 
 在这种模式中，用户必须把自己的密码给客户端，但是客户端不得储存密码。这通常用在用户对客户端高度信任的情况下，比如客户端是操作系统的一部分，或者由一个著名公司出品。而认证服务器只有在其他授权模式无法执行的情况下，才能考虑使用这种模式。
-![](https://tva1.sinaimg.cn/large/0081Kckwgy1glxoajbd2fj30m70ba0sq.jpg)
+![](/img/newimg/0081Kckwgy1glxoajbd2fj30m70ba0sq.jpg)
 它的步骤如下：
 
 >（A）用户向客户端提供用户名和密码。
@@ -299,7 +299,7 @@ C步骤中，认证服务器向客户端发送访问令牌，下面是一个例�
 
 客户端模式（Client Credentials Grant）指客户端以自己的名义，而不是以用户的名义，向"服务提供商"进行认证。严格地说，客户端模式并不属于OAuth框架所要解决的问题。在这种模式中，用户直接向客户端注册，客户端以自己的名义要求"服务提供商"提供服务，其实不存在授权问题。
 
-![](https://tva1.sinaimg.cn/large/0081Kckwgy1glxodml3s2j30ma053wec.jpg)
+![](/img/newimg/0081Kckwgy1glxodml3s2j30ma053wec.jpg)
 它的步骤如下：
 
 >（A）客户端向认证服务器进行身份认证，并要求一个访问令牌。

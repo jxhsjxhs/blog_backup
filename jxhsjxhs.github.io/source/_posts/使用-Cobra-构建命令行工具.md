@@ -85,7 +85,7 @@ go install
 ### 初始化项目
 
 在命令行下运行下cobra命令
-![](https://tva1.sinaimg.cn/large/0082zybpgy1gc4duaem93j319c0qa13s.jpg)
+![](/img/newimg/0082zybpgy1gc4duaem93j319c0qa13s.jpg)
 如图的话 就是安装OK了。接下来就可以使用cobra了。
 假设我们现在要开发一个基于CLI的命令程序，名字的。如下dsb(大傻逼)图操作：
 ```
@@ -172,7 +172,7 @@ exit status 1
 ### 子命令
 之前运行会提示 subcommand is required，是因为根命令无法直接运行。那我们就添加个子命令试试。
 通过 cobra add 添加子命令 create:
-![](https://tva1.sinaimg.cn/large/0082zybpgy1gc4f8adl5mj30mo03et8p.jpg)
+![](/img/newimg/0082zybpgy1gc4f8adl5mj30mo03et8p.jpg)
 
 当前项目结构为：
 dsb
@@ -210,7 +210,7 @@ unknown command "crea" for "demo"
 Did you mean this?
 	create
 ```
-![](https://tva1.sinaimg.cn/large/0082zybpgy1gc4fdq8cxxj30j60ekq3d.jpg)
+![](/img/newimg/0082zybpgy1gc4fdq8cxxj30j60ekq3d.jpg)
 
 ### 子命令嵌套
 对于功能相对复杂的 CLI，通常会通过多级子命令，即：子命令嵌套的方式进行描述，那么该如何实现呢？
@@ -273,7 +273,7 @@ var createCmd = &cobra.Command{
 运行测试：
 
 直接运行 create，打印帮助提示：
-![](https://tva1.sinaimg.cn/large/0082zybpgy1gc4fi34sm4j310e0koq4y.jpg)
+![](/img/newimg/0082zybpgy1gc4fi34sm4j310e0koq4y.jpg)
 
 运行 `create rule`，输出 `rule called`：
 ```

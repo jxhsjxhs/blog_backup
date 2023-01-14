@@ -11,16 +11,16 @@ tags:
 ### 一、快递员问题
 
 我住在一个大型的居民小区。
-![](https://tva1.sinaimg.cn/large/0081Kckwgy1glvm5d78v3j30m80etq4n.jpg)
+![](/img/newimg/0081Kckwgy1glvm5d78v3j30m80etq4n.jpg)
 
 小区有门禁系统。
 
-![](https://tva1.sinaimg.cn/large/0081Kckwgy1glvm6d9hggj30m80gh75d.jpg)
+![](/img/newimg/0081Kckwgy1glvm6d9hggj30m80gh75d.jpg)
 
 进入的时候需要输入密码。
-![](https://tva1.sinaimg.cn/large/0081Kckwgy1glvm6m43h6j30e00b10t8.jpg)
+![](/img/newimg/0081Kckwgy1glvm6m43h6j30e00b10t8.jpg)
 我经常网购和外卖，每天都有快递员来送货。我必须找到一个办法，让快递员通过门禁系统，进入小区。
-![](https://tva1.sinaimg.cn/large/0081Kckwgy1glvm6z4zumj30dc0a0aaw.jpg)
+![](/img/newimg/0081Kckwgy1glvm6z4zumj30dc0a0aaw.jpg)
 
 如果我把自己的密码，告诉快递员，他就拥有了与我同样的权限，这样好像不太合适。万一我想取消他进入小区的权力，也很麻烦，我自己的密码也得跟着改了，还得通知其他的快递员。
 

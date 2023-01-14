@@ -6,11 +6,11 @@ tags:
 
 containerd 是一个高级容器运行时，又名 容器管理器。简单来说，它是一个守护进程，在单个主机上管理完整的容器生命周期：创建、启动、停止容器、拉取和存储镜像、配置挂载、网络等。
 containerd 旨在轻松嵌入到更大的系统中。Docker 在底层使用 containerd 来运行容器。Kubernetes 可以通过 CRI 使用 containerd 来管理单个节点上的容器。但是较小的项目也可以从与 containerd 的轻松集成中受益——例如，faasd 使用 containerd（我们需要更多的 d！）在独立服务器上启动一个服务。
-![](https://tva1.sinaimg.cn/large/008i3skNgy1gvyonj2ov3j30u00gl75u.jpg)
+![](/img/newimg/008i3skNgy1gvyonj2ov3j30u00gl75u.jpg)
 
 但是，以编程方式使用 containerd 并不是唯一的选择。它还可以通过可用客户端之一从命令行使用。由此产生的容器 UX 可能不像 docker 客户端提供的那样全面和用户友好，但它仍然是有用的，例如，用于调试或学习目的。
 
-![](https://tva1.sinaimg.cn/large/008i3skNgy1gvyonojvlgj30u00gr3zv.jpg)
+![](/img/newimg/008i3skNgy1gvyonojvlgj30u00gr3zv.jpg)
 
 ### 如何在 ctr 中使用 containerd
 ctr 是作为 containerd 项目的一部分提供的命令行客户端。如果您在机器上运行了 containerd，则 ctr 二进制文件很可能也在那里。
@@ -158,7 +158,7 @@ crictl 是 Kubernetes CRI 兼容容器运行时的命令行客户端。
 >引入了 Kubernetes 容器运行时接口 (CRI)以使 Kubernetes 容器运行时充满魔法。Kubernetes 节点代理 kubelet 实现了 CRI 客户端 API，可以使用任何实现 CRI 服务器 API 的容器运行时来管理其节点上的容器和 pod。
 
 
-![](https://tva1.sinaimg.cn/large/008i3skNgy1gvyoqpzndwj30u00op42q.jpg)
+![](/img/newimg/008i3skNgy1gvyoqpzndwj30u00op42q.jpg)
 
 从 1.1 版开始，containerd 带有一个内置的 CRI 插件。因此，containerd 是一个兼容 CRI 的容器运行时。因此，它可以与 crictl 共存.
 crictl 创建用于检查和调试 Kubernetes 节点上的容器运行时和应用程序。它支持以下操作：

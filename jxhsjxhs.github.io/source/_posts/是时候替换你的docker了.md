@@ -17,7 +17,7 @@ tags: docker
 > 构建容器导致安全漏洞。
 > 所有 Docker 操作都必须由具有相同完全根权限的一个或多个用户执行。
 
-> ![docker架构](https://tva1.sinaimg.cn/large/006y8mN6gy1g864qjrpbdj30lk0ggt9a.jpg)
+> ![docker架构](/img/newimg/006y8mN6gy1g864qjrpbdj30lk0ggt9a.jpg)
 
 ### 常见尴尬场景：
 
@@ -38,12 +38,12 @@ tags: docker
 
 ## <center>下面来介绍一下 podman</center>
 
-> ![podman logo](https://tva1.sinaimg.cn/large/006y8mN6gy1g864ql1251j30yv0afgne.jpg)
+> ![podman logo](/img/newimg/006y8mN6gy1g864ql1251j30yv0afgne.jpg)
 > Podman 是一个容器运行时环境，提供与 Docker 非常相似的功能。正如已经提示的那样，它不需要在你的系统上运行任何守护进程，并且它也可以在没有 root 权限的情况下运行。让我们看看使用 Podman 运行 Linux 容器的一些示例。
-> ![podman run](https://tva1.sinaimg.cn/large/006y8mN6gy1g864qm0bjqj30fq0iaaao.jpg)
+> ![podman run](/img/newimg/006y8mN6gy1g864qm0bjqj30fq0iaaao.jpg)
 > 你会发现启动一个容器 并不需要先启动 docker 了。甚至没有 podman 的进程。使得容器就是容器 轻量级了很多。
 
-> ![podman架构](https://tva1.sinaimg.cn/large/006y8mN6gy1g864qo6razj31wq0e8gt1.jpg)
+> ![podman架构](/img/newimg/006y8mN6gy1g864qo6razj31wq0e8gt1.jpg)
 
 ## 课外讲讲发展史
 

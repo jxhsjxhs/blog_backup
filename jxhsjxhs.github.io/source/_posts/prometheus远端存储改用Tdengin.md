@@ -2,8 +2,8 @@
 title: prometheus远端存储改用Tdengin
 date: 2022-12-26 09:45:42
 tags:
-index_img: https://tva1.sinaimg.cn/large/008vxvgGgy1h9h0g9mta2j30uw0cc757.jpg
-banner_img: https://tva1.sinaimg.cn/large/008vxvgGgy1h9h0g9mta2j30uw0cc757.jpg
+index_img: /img/newimg/008vxvgGgy1h9h0g9mta2j30uw0cc757.jpg
+banner_img: /img/newimg/008vxvgGgy1h9h0g9mta2j30uw0cc757.jpg
 ---
 ### Prometheus
 prometheus 在监控方面的能力是有目共睹的，我们在实施监控方案时，为满足大规模应用集群的监控及数据的高效查询能力，通常也会考虑将prometheus的部署扩展为集群。对于prometheus集群的搭建，常见的是官方推荐的联邦模式，但该模式是一种分层结构，在查询监控数据时，仍对下层的Prometheus有一定性能影响。根据官方文档的阅读及个人对集群的理解，我设计了一个基于Tdengine 的prometheus读写分离方案。 该方案结合了Prometheus的远程读写功能及tdengine 的高性能查询及数据压缩能力，有效控制了prometheus集群部署的规模和数据存储压缩的问题，相对规模化数据也提升了查询性能。对于prometheus 的远端存储方案，网上很多文章都是基于influxdb的,当前方案选用的Tdengine是一款开源、云原生的时序数据库，相对influxdb，其提供了优秀的查询和集群能力，更多优点可见：[TDengine和InfluxDB的性能对比报告](https://www.taosdata.com/engineering/5969.html)
@@ -11,7 +11,7 @@ prometheus 在监控方面的能力是有目共睹的，我们在实施监控方
 得益于Prometheus 提供了 remote_write 和 remote_read 接口来利用其它数据库产品作为它的存储引擎。为了让 Prometheus 生态圈的用户能够利用 TDengine 的高效写入和查询，TDengine 也提供了对这两个接口的支持。
 
 通过适当的配置， Prometheus 的数据可以通过 remote_write 接口存储到 TDengine 中，也可以通过 remote_read 接口来查询存储在 TDengine 中的数据，充分利用 TDengine 对时序数据的高效存储查询性能和集群处理能力。
-![](https://tva1.sinaimg.cn/large/008vxvgGgy1h9gzchcypgj319e0tc76x.jpg)
+![](/img/newimg/008vxvgGgy1h9gzchcypgj319e0tc76x.jpg)
 通过图中读写分离的方案，可以高效的实现监控数据以及监控组件的分离、横向扩容等。
 
 ### taosAdapter
@@ -24,7 +24,7 @@ RESTful 接口
 无缝连接到 collectd
 无缝连接到 StatsD
 ```
-![](https://tva1.sinaimg.cn/large/008vxvgGgy1h9gzf94gdqj31i60jg416.jpg)
+![](/img/newimg/008vxvgGgy1h9gzf94gdqj31i60jg416.jpg)
 
 
 ### 部署方案
@@ -120,7 +120,7 @@ curl -u root:taosdata -d 'show databases' 127.0.0.1:6041/rest/sql
 alter database prometheus keep 90;
 
 ```
-![](https://tva1.sinaimg.cn/large/008vxvgGgy1h9h00nhoxlj31980u0dif.jpg)
+![](/img/newimg/008vxvgGgy1h9h00nhoxlj31980u0dif.jpg)
 
 #### Prometheus部署
 对于开启prometheus的remote_write 是非常简单的，只需在配置文件中添加如下配置即可:
@@ -147,7 +147,7 @@ remote_read:
       password: taosdata
 ```
 查看Prometheus配置
-![](https://tva1.sinaimg.cn/large/008vxvgGgy1h9h03ikt0rj30w20u0acs.jpg)
+![](/img/newimg/008vxvgGgy1h9h03ikt0rj30w20u0acs.jpg)
 
 启动prometheus
 ```
@@ -157,4 +157,4 @@ docker run  -d \
   prom/prometheus
 ```
 进入tdengin容器节点，查看数据是否进入
-![](https://tva1.sinaimg.cn/large/008vxvgGgy1h9h0b6wke2j30u00wbtdj.jpg)
+![](/img/newimg/008vxvgGgy1h9h0b6wke2j30u00wbtdj.jpg)

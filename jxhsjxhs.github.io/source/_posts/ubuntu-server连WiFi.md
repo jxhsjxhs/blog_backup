@@ -84,7 +84,7 @@ WantedBy=multi-user.target
 
 执行 systemctl enable  rc-local
 重启后可以发现,已经能自动连上wifi,并且 systemd能看到已经启动
-![](https://tva1.sinaimg.cn/large/006tNbRwgy1gb7rgdj73cj31mu0f6e3g.jpg)
+![](/img/newimg/006tNbRwgy1gb7rgdj73cj31mu0f6e3g.jpg)
 
-![](https://tva1.sinaimg.cn/large/006tNbRwgy1gb7rgxzu1mj31qu0psqv5.jpg)
+![](/img/newimg/006tNbRwgy1gb7rgxzu1mj31qu0psqv5.jpg)
 ```

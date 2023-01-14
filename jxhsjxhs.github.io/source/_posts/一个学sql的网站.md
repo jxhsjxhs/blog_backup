@@ -9,4 +9,4 @@ tags:
 > `http://xuesql.cn`
 
 
-![](https://tva1.sinaimg.cn/large/008i3skNgy1gvzwy50oq4j30u70u0k0n.jpg)
+![](/img/newimg/008i3skNgy1gvzwy50oq4j30u70u0k0n.jpg)

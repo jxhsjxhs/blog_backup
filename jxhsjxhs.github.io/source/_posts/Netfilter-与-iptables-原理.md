@@ -15,7 +15,7 @@ index_img: /img/pageimg/iptables.jpg
 
 `Netfilter` 通过向内核协议栈中不同的位置注册 `钩子函数（Hooks）` 来对数据包进行过滤或者修改操作，这些位置称为 `挂载点`，主要有 5 个：`PRE_ROUTING`、`LOCAL_IN`、`FORWARD`、`LOCAL_OUT` 和 `POST_ROUTING`，如下图所示：
 
-![](https://tva1.sinaimg.cn/large/008eGmZEgy1gpb8zqdc1cj311g0b0wg5.jpg)
+![](/img/newimg/008eGmZEgy1gpb8zqdc1cj311g0b0wg5.jpg)
 
 这 5 个 `挂载点` 的意义如下：
 
@@ -37,7 +37,7 @@ index_img: /img/pageimg/iptables.jpg
 
 通过向这些 `挂载点` 注册钩子函数，就能够对处于不同阶段的数据包进行过滤或者修改操作。由于钩子函数能够注册多个，所以内核使用链表来保存这些钩子函数，如下图所示：
 
-![](https://tva1.sinaimg.cn/large/008eGmZEgy1gpb8zve72cj30jm07lwf7.jpg)
+![](/img/newimg/008eGmZEgy1gpb8zve72cj30jm07lwf7.jpg)
 
 如上图所示，当数据包进入本地（`LOCAL_IN` 挂载点）时，就会相继调用 `ipt_hook` 和 `fw_confirm` 钩子函数来处理数据包。另外，钩子函数还有优先级，优先级越小越先执行。
 
@@ -99,13 +99,13 @@ index_img: /img/pageimg/iptables.jpg
 
 我们通过下图来展示各个表所挂载的链：
 
-![](https://tva1.sinaimg.cn/large/008eGmZEgy1gpb9047qwej311g0fjtb9.jpg)
+![](/img/newimg/008eGmZEgy1gpb9047qwej311g0fjtb9.jpg)
 
 上图展示了，数据包从网络中进入到内核协议栈的过程中，要执行的 `iptables` 规则，如果在执行某条 `iptables` 规则失败后，会直接把数据包丢弃，不会继续执行下面的规则。
 
 拿其中一个链来看，如下图所示：
 
-![](https://tva1.sinaimg.cn/large/008eGmZEgy1gpb907tvhsj30eh0jv0ti.jpg)
+![](/img/newimg/008eGmZEgy1gpb907tvhsj30eh0jv0ti.jpg)
 
 也就是说，当数据包从网络中进入到内核协议栈后，在路由判定前会分别执行 `Raw表`、`Mangle表` 和 `NAT表` 中的规则。如果在执行规则时，某一条规则拒绝了数据包，那么数据包便会被丢弃，从而不会继续执行下面的规则。
 
@@ -142,7 +142,7 @@ iptables [选项 参数] ...
 
 `iptables` 规则的选项比较多，一般来说，一条 `iptables` 规则主要由四个部分组成，如下图所示：
 
-![](https://tva1.sinaimg.cn/large/008eGmZEgy1gpb90ga6tzj30fv01pglh.jpg)
+![](/img/newimg/008eGmZEgy1gpb90ga6tzj30fv01pglh.jpg)
 
 * 第一部分可以通过 `-t` 选项来指定操作的表，如 `filter`、`nat`、`mangle` 或 `raw`。
 

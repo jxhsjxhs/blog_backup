@@ -21,7 +21,7 @@ Apache APISIX 是一个动态、实时、高性能的 API 网关，基于 Nginx 
 
 Apache APISIX 的技术架构如下图所示：
 
-![](https://tva1.sinaimg.cn/large/0081Kckwgy1gl85xhdvnoj30th0fmju8.jpg)
+![](/img/newimg/0081Kckwgy1gl85xhdvnoj30th0fmju8.jpg)
 
 ## 目录
 
